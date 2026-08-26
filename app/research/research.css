@@ -19,7 +19,7 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
 /* Publication */
 .article-shell{padding:0 0 120px;background:#f7f8f4}
 .article{width:min(1180px,calc(100% - 48px));margin:0 auto}
-.article-header{padding:95px 0 70px;border-bottom:1px solid #82908d;margin-bottom:0}
+.article-header{padding:95px clamp(0px,7vw,110px) 70px;border-bottom:1px solid #82908d;margin-bottom:0}
 .article-header>.eyebrow{margin-bottom:26px}
 .article h1{max-width:1000px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(54px,7.2vw,96px);line-height:.93;letter-spacing:-.055em;margin:0 0 28px}
 .subtitle{max-width:850px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.25;color:#087b70;margin:0 0 25px}
