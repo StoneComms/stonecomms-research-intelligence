@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {notFound} from 'next/navigation'
 import {PortableText, type PortableTextComponents} from '@portabletext/react'
 import {getPublication} from '@/lib/sanity'
+import PdfDownloadLink from '../PdfDownloadLink'
 
 const components:PortableTextComponents={
   block:{h2:({children})=><h2>{children}</h2>,h3:({children})=><h3>{children}</h3>,normal:({children})=><p>{children}</p>,blockquote:({children})=><blockquote>{children}</blockquote>},
@@ -12,7 +13,7 @@ const components:PortableTextComponents={
 
 type Props={params:Promise<{slug:string}>}
 export async function generateMetadata({params}:Props):Promise<Metadata>{const {slug}=await params;const p=await getPublication(slug);if(!p)return {};return {title:p.seo?.title||p.title,description:p.seo?.description||p.standfirst,robots:p.seo?.noIndex?'noindex':undefined,openGraph:{title:p.seo?.socialTitle||p.title,description:p.seo?.description||p.standfirst,type:'article'}}}
-export default async function PublicationPage({params}:Props){const {slug}=await params;const p=await getPublication(slug);if(!p)notFound();return <main className="article-shell"><article className="article"><div className="article-header"><div className="eyebrow">Flagship research · {p.publicationDate}</div><h1>{p.title}</h1>{p.subtitle&&<div className="subtitle">{p.subtitle}</div>}<p className="standfirst">{p.standfirst}</p><div className="meta-row"><span>{p.byline||'StoneComms Research & Intelligence'}</span><span><Link href="/research">← Back to research</Link></span></div>{p.keyMetrics?.length?<div className="metrics">{p.keyMetrics.map(m=><div className="metric" key={m._key}><strong>{m.value}</strong><span>{m.label}{m.referenceNumber?` [${m.referenceNumber}]`:''}</span></div>)}</div>:null}</div>
+export default async function PublicationPage({params}:Props){const {slug}=await params;const p=await getPublication(slug);if(!p)notFound();return <main className="article-shell"><article className="article"><div className="article-header"><div className="eyebrow">Flagship research · {p.publicationDate}</div><h1>{p.title}</h1>{p.subtitle&&<div className="subtitle">{p.subtitle}</div>}<p className="standfirst">{p.standfirst}</p><PdfDownloadLink url={p.pdfUrl}/><div className="meta-row"><span>{p.byline||'StoneComms Research & Intelligence'}</span><span><Link href="/research">← Back to research</Link></span></div>{p.keyMetrics?.length?<div className="metrics">{p.keyMetrics.map(m=><div className="metric" key={m._key}><strong>{m.value}</strong><span>{m.label}{m.referenceNumber?` [${m.referenceNumber}]`:''}</span></div>)}</div>:null}</div>
 <div className="article-content"><PortableText value={p.body||[]} components={components}/></div>
 {p.methodology?.length?<section className="panel"><div className="eyebrow">Evidence & method</div><PortableText value={p.methodology} components={components}/></section>:null}
 {p.limitations?.length?<section className="panel"><div className="eyebrow">Limitations & uncertainty</div><PortableText value={p.limitations} components={components}/></section>:null}
