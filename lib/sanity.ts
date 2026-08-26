@@ -34,15 +34,25 @@ export type Publication = PublicationCard & {
   seo?: {title?:string; description?:string; socialTitle?:string; noIndex?:boolean}
 }
 
+const pdfProjection = `"pdfUrl": coalesce(
+  downloadablePdf.asset->url,
+  sourcePdf.asset->url,
+  downloadableSourcePdf.asset->url,
+  pdfDownload.asset->url,
+  pdf.asset->url
+)`
+
 export async function getPublications(): Promise<PublicationCard[]> {
   return sanityQuery<PublicationCard[]>(`*[_type == "publication" && defined(slug.current)] | order(publicationDate desc) {
-    _id, title, "slug": slug.current, standfirst, publicationDate, publicationType, byline
+    _id, title, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
+    ${pdfProjection}
   }`)
 }
 
 export async function getPublication(slug: string): Promise<Publication | null> {
   return sanityQuery<Publication | null>(`*[_type == "publication" && slug.current == $slug][0]{
     _id, title, subtitle, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
+    ${pdfProjection},
     keyMetrics, body, methodology, limitations, sourceNote, sources, seo
   }`, { slug })
 }
