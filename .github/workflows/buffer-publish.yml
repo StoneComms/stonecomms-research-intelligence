@@ -1,0 +1,23 @@
+name: Publish social post via Buffer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'social-outbox/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish new outbox requests
+        run: node scripts/publish-buffer-outbox.mjs
