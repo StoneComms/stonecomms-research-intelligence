@@ -19,14 +19,15 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
 /* Publication */
 .article-shell{padding:0 0 120px;background:#f7f8f4}
 .article{width:min(1180px,calc(100% - 48px));margin:0 auto}
-.article-header{padding:95px clamp(0px,7vw,110px) 70px;border-bottom:1px solid #82908d;margin-bottom:0}
+.article-header{padding:95px 0 70px;border-bottom:1px solid #82908d;margin-bottom:0}
+.article-header>.eyebrow,.article h1,.subtitle,.standfirst,.meta-row{width:min(760px,100%);margin-left:auto;margin-right:auto}
 .article-header>.eyebrow{margin-bottom:26px}
-.article h1{max-width:1000px;font-family:Georgia,'Times New Roman',serif;font-size:clamp(54px,7.2vw,96px);line-height:.93;letter-spacing:-.055em;margin:0 0 28px}
-.subtitle{max-width:850px;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.25;color:#087b70;margin:0 0 25px}
-.standfirst{max-width:800px;font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.48;margin:25px 0 35px;color:#2d4145}
-.meta-row{display:flex;justify-content:space-between;gap:25px;max-width:800px;padding-top:20px;border-top:1px solid #c4cdca;color:#607073;font-size:11px;text-transform:uppercase;letter-spacing:.09em}
+.article h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(54px,7.2vw,96px);line-height:.93;letter-spacing:-.055em;margin-top:0;margin-bottom:28px}
+.subtitle{font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.25;color:#087b70;margin-top:0;margin-bottom:25px}
+.standfirst{font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.48;margin-top:25px;margin-bottom:35px;color:#2d4145}
+.meta-row{display:flex;justify-content:space-between;gap:25px;padding-top:20px;border-top:1px solid #c4cdca;color:#607073;font-size:11px;text-transform:uppercase;letter-spacing:.09em}
 .meta-row a{text-transform:none;letter-spacing:0;font-weight:700}
-.metrics{max-width:1000px;display:grid;grid-template-columns:repeat(3,1fr);margin:55px 0 0;border-top:1px solid #82908d;border-bottom:1px solid #82908d}
+.metrics{width:min(1000px,100%);display:grid;grid-template-columns:repeat(3,1fr);margin:55px auto 0;border-top:1px solid #82908d;border-bottom:1px solid #82908d}
 .metric{padding:24px 30px 24px 0;border-right:1px solid #82908d}
 .metric+.metric{padding-left:30px}
 .metric:last-child{border-right:0}
