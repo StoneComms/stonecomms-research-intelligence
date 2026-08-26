@@ -1,0 +1,68 @@
+name: Discover Buffer channels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/buffer-discover.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Discover organizations and channels
+        shell: bash
+        run: |
+          node <<'NODE'
+          const endpoint = 'https://api.buffer.com'
+          const token = process.env.BUFFER_API_KEY
+          if (!token) throw new Error('BUFFER_API_KEY is not configured')
+
+          async function gql(query, variables = {}) {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify({query, variables}),
+            })
+            const payload = await response.json()
+            if (!response.ok || payload.errors?.length) {
+              throw new Error(JSON.stringify(payload.errors || payload))
+            }
+            return payload.data
+          }
+
+          const orgData = await gql(`query {
+            account {
+              organizations {
+                id
+                name
+              }
+            }
+          }`)
+
+          for (const org of orgData.account.organizations) {
+            console.log(`ORGANIZATION\t${org.id}\t${org.name}`)
+            const channelData = await gql(`query GetChannels($organizationId: ID!) {
+              channels(input: {organizationId: $organizationId}) {
+                id
+                name
+                displayName
+                service
+                isQueuePaused
+              }
+            }`, {organizationId: org.id})
+
+            for (const channel of channelData.channels) {
+              console.log(`CHANNEL\t${channel.id}\t${channel.service}\t${channel.name}\t${channel.displayName}\tpaused=${channel.isQueuePaused}`)
+            }
+          }
+          NODE
