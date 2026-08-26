@@ -12,25 +12,12 @@ async function sanityQuery<T>(query: string, params: Record<string, string> = {}
   return json.result as T
 }
 
-type SanityFile = string | {asset?: {_ref?: string}}
-
-type PublicationPdfFields = {
-  downloadablePdf?: SanityFile
-  sourcePdf?: SanityFile
-  downloadableSourcePdf?: SanityFile
-  pdfDownload?: SanityFile
-  pdf?: SanityFile
-}
-
-function resolvePdfUrl(publication: PublicationPdfFields): string | undefined {
+function withPdfUrl(publication: any) {
   const file = publication.downloadablePdf || publication.sourcePdf || publication.downloadableSourcePdf || publication.pdfDownload || publication.pdf
-  if (typeof file === 'string') return file
+  if (typeof file === 'string') return {...publication, pdfUrl: file}
   const match = file?.asset?._ref?.match(/^file-(.+)-([^-]+)$/)
-  return match ? `https://cdn.sanity.io/files/${projectId}/${dataset}/${match[1]}.${match[2]}` : undefined
-}
-
-function withPdfUrl<T extends PublicationCard>(publication: T & PublicationPdfFields): T {
-  return {...publication, pdfUrl: resolvePdfUrl(publication)}
+  const pdfUrl = match ? `https://cdn.sanity.io/files/${projectId}/${dataset}/${match[1]}.${match[2]}` : undefined
+  return {...publication, pdfUrl}
 }
 
 export type PublicationCard = {
