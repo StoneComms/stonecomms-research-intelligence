@@ -12,6 +12,27 @@ async function sanityQuery<T>(query: string, params: Record<string, string> = {}
   return json.result as T
 }
 
+type SanityFile = string | {asset?: {_ref?: string}}
+
+type PublicationPdfFields = {
+  downloadablePdf?: SanityFile
+  sourcePdf?: SanityFile
+  downloadableSourcePdf?: SanityFile
+  pdfDownload?: SanityFile
+  pdf?: SanityFile
+}
+
+function resolvePdfUrl(publication: PublicationPdfFields): string | undefined {
+  const file = publication.downloadablePdf || publication.sourcePdf || publication.downloadableSourcePdf || publication.pdfDownload || publication.pdf
+  if (typeof file === 'string') return file
+  const match = file?.asset?._ref?.match(/^file-(.+)-([^-]+)$/)
+  return match ? `https://cdn.sanity.io/files/${projectId}/${dataset}/${match[1]}.${match[2]}` : undefined
+}
+
+function withPdfUrl<T extends PublicationCard>(publication: T & PublicationPdfFields): T {
+  return {...publication, pdfUrl: resolvePdfUrl(publication)}
+}
+
 export type PublicationCard = {
   _id: string
   title: string
@@ -37,14 +58,14 @@ export type Publication = PublicationCard & {
 export async function getPublications(): Promise<PublicationCard[]> {
   return sanityQuery<PublicationCard[]>(`*[_type == "publication" && defined(slug.current)] | order(publicationDate desc) {
     _id, title, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
-    "pdfUrl": coalesce(downloadablePdf.asset->url, sourcePdf.asset->url, downloadableSourcePdf.asset->url, pdfDownload.asset->url, pdf.asset->url)
-  }`)
+    downloadablePdf, sourcePdf, downloadableSourcePdf, pdfDownload, pdf
+  }`).then(publications => publications.map(withPdfUrl))
 }
 
 export async function getPublication(slug: string): Promise<Publication | null> {
   return sanityQuery<Publication | null>(`*[_type == "publication" && slug.current == $slug][0]{
     _id, title, subtitle, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
-    "pdfUrl": coalesce(downloadablePdf.asset->url, sourcePdf.asset->url, downloadableSourcePdf.asset->url, pdfDownload.asset->url, pdf.asset->url),
+    downloadablePdf, sourcePdf, downloadableSourcePdf, pdfDownload, pdf,
     keyMetrics, body, methodology, limitations, sourceNote, sources, seo
-  }`, { slug })
+  }`, { slug }).then(publication => publication ? withPdfUrl(publication) : null)
 }
