@@ -1,0 +1,8 @@
+{
+  "status": "ready",
+  "mode": "addToQueue",
+  "channels": [
+    "linkedin"
+  ],
+  "text": "Kenya does not need to choose one electric-motorcycle battery. It needs to decide which parts of the system must speak to each other before today's networks become tomorrow's lock-in.\n\nBattery swapping is becoming infrastructure. SUN Mobility and Vivo Energy reported 35 stations live at launch. Other networks are scaling. Kenya Power says electricity used for EV charging rose 188% in 2025.\n\nAt the same time, Kenya's State Department for Transport and IFC are turning the national e-mobility policy into a Bill and regulations.\n\nStoneComms finds a narrow policy window. The best first move is minimum viable interoperability across seven layers: site access; payment and roaming; identity and settlement; safety data; electrical interfaces; physical interfaces; and governance and liability.\n\nStandardise the handshake, not the whole machine.\n\nAn important limit: confidence is high that the timing problem is real, but the precise economic value of interoperability is not yet known. Rider, station and financial data are still needed.\n\nFor policymakers, development financiers, utilities, operators and investors, the question is urgent: which interfaces must remain contestable before capital and customer habits harden around incompatible systems?\n\nRead the full StoneComms research: https://stonecomms-research-intelligence.vercel.app/research/open-before-it-locks-kenya-battery-swapping-interoperability\n\n#ElectricMobility #Kenya #ClimateFinance"
+}
