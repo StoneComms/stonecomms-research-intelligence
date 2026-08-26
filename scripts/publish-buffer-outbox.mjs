@@ -5,6 +5,12 @@ const endpoint = 'https://api.buffer.com'
 const token = process.env.BUFFER_API_KEY
 if (!token) throw new Error('BUFFER_API_KEY is not configured')
 
+const CHANNELS = {
+  linkedin: '6a8f2c7dccaf649a671fe0fe',
+  instagram: '6a8f2d74ccaf649a671fead7',
+  x: '6a8f300cccaf649a671ffcd5',
+}
+
 async function gql(query, variables = {}) {
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -25,11 +31,20 @@ const files = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()
 for (const file of files) {
   const request = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
   if (request.status && request.status !== 'ready') continue
-  if (!request.text || !Array.isArray(request.channelIds) || request.channelIds.length === 0) {
-    throw new Error(`${file}: text and channelIds are required`)
+
+  const channels = request.channels
+  if (!request.text || !Array.isArray(channels) || channels.length === 0) {
+    throw new Error(`${file}: text and channels are required`)
   }
 
-  for (const channelId of request.channelIds) {
+  const resolved = channels.map(name => {
+    const normalized = String(name).toLowerCase()
+    const channelId = CHANNELS[normalized]
+    if (!channelId) throw new Error(`${file}: unknown channel '${name}'. Use linkedin, instagram, or x.`)
+    return {name: normalized, channelId}
+  })
+
+  for (const {name, channelId} of resolved) {
     const data = await gql(`mutation CreatePost($text: String!, $channelId: ID!, $mode: PostMode!) {
       createPost(input: {text: $text, channelId: $channelId, schedulingType: automatic, mode: $mode}) {
         ... on PostActionSuccess { post { id text dueAt } }
@@ -37,6 +52,6 @@ for (const file of files) {
       }
     }`, {text: request.text, channelId, mode: request.mode || 'addToQueue'})
     if (data.createPost?.message) throw new Error(`${file}: ${data.createPost.message}`)
-    console.log(`Queued ${file} on ${channelId}: ${data.createPost?.post?.id || 'created'}`)
+    console.log(`Queued ${file} on ${name}: ${data.createPost?.post?.id || 'created'}`)
   }
 }
