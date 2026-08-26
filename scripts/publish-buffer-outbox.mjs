@@ -24,6 +24,21 @@ async function gql(query, variables = {}) {
   return payload.data
 }
 
+function buildAssets(media) {
+  if (!Array.isArray(media) || media.length === 0) return undefined
+  return media.map((item, index) => {
+    if (!item?.url || typeof item.url !== 'string' || !item.url.startsWith('https://')) {
+      throw new Error(`media[${index}].url must be a public HTTPS URL`)
+    }
+    if (item.type && item.type !== 'image') {
+      throw new Error(`media[${index}].type '${item.type}' is not supported yet; use image`)
+    }
+    const image = {url: item.url}
+    if (item.alt) image.metadata = {altText: String(item.alt)}
+    return {image}
+  })
+}
+
 const dir = 'social-outbox'
 if (!fs.existsSync(dir)) process.exit(0)
 
@@ -44,13 +59,25 @@ for (const file of files) {
     return {name: normalized, channelId}
   })
 
+  const assets = buildAssets(request.media)
+
   for (const {name, channelId} of resolved) {
-    const data = await gql(`mutation CreatePost($text: String!, $channelId: ID!, $mode: PostMode!) {
-      createPost(input: {text: $text, channelId: $channelId, schedulingType: automatic, mode: $mode}) {
-        ... on PostActionSuccess { post { id text dueAt } }
+    const input = {
+      text: request.text,
+      channelId,
+      schedulingType: 'automatic',
+      mode: request.mode || 'addToQueue',
+      aiAssisted: true,
+      ...(assets ? {assets} : {}),
+    }
+
+    const data = await gql(`mutation CreatePost($input: CreatePostInput!) {
+      createPost(input: $input) {
+        ... on PostActionSuccess { post { id text dueAt assets { id mimeType } } }
         ... on MutationError { message }
       }
-    }`, {text: request.text, channelId, mode: request.mode || 'addToQueue'})
+    }`, {input})
+
     if (data.createPost?.message) throw new Error(`${file}: ${data.createPost.message}`)
     console.log(`Queued ${file} on ${name}: ${data.createPost?.post?.id || 'created'}`)
   }
