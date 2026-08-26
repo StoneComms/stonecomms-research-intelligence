@@ -35,6 +35,7 @@ export type Publication = PublicationCard & {
 }
 
 const pdfProjection = `"pdfUrl": coalesce(
+  pdfFile.asset->url,
   downloadablePdf.asset->url,
   sourcePdf.asset->url,
   downloadableSourcePdf.asset->url,
