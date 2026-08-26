@@ -12,14 +12,6 @@ async function sanityQuery<T>(query: string, params: Record<string, string> = {}
   return json.result as T
 }
 
-function withPdfUrl(publication: any) {
-  const file = publication.downloadablePdf || publication.sourcePdf || publication.downloadableSourcePdf || publication.pdfDownload || publication.pdf
-  if (typeof file === 'string') return {...publication, pdfUrl: file}
-  const match = file?.asset?._ref?.match(/^file-(.+)-([^-]+)$/)
-  const pdfUrl = match ? `https://cdn.sanity.io/files/${projectId}/${dataset}/${match[1]}.${match[2]}` : undefined
-  return {...publication, pdfUrl}
-}
-
 export type PublicationCard = {
   _id: string
   title: string
@@ -44,15 +36,13 @@ export type Publication = PublicationCard & {
 
 export async function getPublications(): Promise<PublicationCard[]> {
   return sanityQuery<PublicationCard[]>(`*[_type == "publication" && defined(slug.current)] | order(publicationDate desc) {
-    _id, title, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
-    downloadablePdf, sourcePdf, downloadableSourcePdf, pdfDownload, pdf
-  }`).then(publications => publications.map(withPdfUrl))
+    _id, title, "slug": slug.current, standfirst, publicationDate, publicationType, byline
+  }`)
 }
 
 export async function getPublication(slug: string): Promise<Publication | null> {
   return sanityQuery<Publication | null>(`*[_type == "publication" && slug.current == $slug][0]{
     _id, title, subtitle, "slug": slug.current, standfirst, publicationDate, publicationType, byline,
-    downloadablePdf, sourcePdf, downloadableSourcePdf, pdfDownload, pdf,
     keyMetrics, body, methodology, limitations, sourceNote, sources, seo
-  }`, { slug }).then(publication => publication ? withPdfUrl(publication) : null)
+  }`, { slug })
 }
