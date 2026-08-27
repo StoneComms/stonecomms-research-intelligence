@@ -1,0 +1,23 @@
+name: Publish Sanity outbox
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sanity-outbox/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Publish Sanity outbox
+        run: node scripts/publish-sanity-outbox.mjs
