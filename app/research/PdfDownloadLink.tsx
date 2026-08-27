@@ -10,7 +10,7 @@ export default function PdfDownloadLink({url}: PdfDownloadLinkProps) {
       className="pdf-download"
       href={url}
       target="_blank"
-      rel="noreferrer noopener"
+      rel="noopener noreferrer"
       aria-label="Open downloadable publication PDF"
     >
       <svg

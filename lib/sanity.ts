@@ -34,14 +34,7 @@ export type Publication = PublicationCard & {
   seo?: {title?:string; description?:string; socialTitle?:string; noIndex?:boolean}
 }
 
-const pdfProjection = `"pdfUrl": coalesce(
-  pdfFile.asset->url,
-  downloadablePdf.asset->url,
-  sourcePdf.asset->url,
-  downloadableSourcePdf.asset->url,
-  pdfDownload.asset->url,
-  pdf.asset->url
-)`
+const pdfProjection = `"pdfUrl": pdfFile.asset->url`
 
 export async function getPublications(): Promise<PublicationCard[]> {
   return sanityQuery<PublicationCard[]>(`*[_type == "publication" && defined(slug.current)] | order(publicationDate desc) {
