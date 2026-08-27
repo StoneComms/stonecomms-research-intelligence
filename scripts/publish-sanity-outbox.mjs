@@ -38,13 +38,23 @@ async function mutate(mutations) {
 }
 
 async function uploadImage(media) {
-  if (!media?.url) throw new Error('heroImage.url is required')
-  const source = await fetch(media.url)
-  if (!source.ok) throw new Error(`Could not fetch hero image: ${source.status}`)
-  const contentType = source.headers.get('content-type') || 'image/png'
-  if (!contentType.startsWith('image/')) throw new Error(`heroImage.url is not an image (${contentType})`)
-  const bytes = await source.arrayBuffer()
-  const filename = media.filename || 'stonecomms-hero.png'
+  let bytes
+  let contentType
+
+  if (media?.dataBase64) {
+    bytes = Buffer.from(media.dataBase64, 'base64')
+    contentType = media.contentType || 'image/jpeg'
+  } else if (media?.url) {
+    const source = await fetch(media.url)
+    if (!source.ok) throw new Error(`Could not fetch hero image: ${source.status}`)
+    contentType = source.headers.get('content-type') || 'image/png'
+    bytes = Buffer.from(await source.arrayBuffer())
+  } else {
+    throw new Error('heroImage requires url or dataBase64')
+  }
+
+  if (!contentType.startsWith('image/')) throw new Error(`heroImage is not an image (${contentType})`)
+  const filename = media.filename || 'stonecomms-hero.jpg'
   const uploaded = await sanity(`/v${apiVersion}/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`, {
     method: 'POST',
     headers: {'content-type': contentType},
@@ -74,6 +84,8 @@ for (const file of files) {
       _type: 'image',
       asset: {_type: 'reference', _ref: assetId},
       ...(request.heroImage.alt ? {alt: request.heroImage.alt} : {}),
+      ...(request.heroImage.caption ? {caption: request.heroImage.caption} : {}),
+      ...(request.heroImage.credit ? {credit: request.heroImage.credit} : {}),
     }
   }
 
