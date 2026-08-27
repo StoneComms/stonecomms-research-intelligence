@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import {uploadImageToSanity} from './media-bridge.mjs'
 
 const projectId = 'poc8ca1r'
 const dataset = 'production'
@@ -37,34 +38,6 @@ async function mutate(mutations) {
   })
 }
 
-async function uploadImage(media) {
-  let bytes
-  let contentType
-
-  if (media?.dataBase64) {
-    bytes = Buffer.from(media.dataBase64, 'base64')
-    contentType = media.contentType || 'image/jpeg'
-  } else if (media?.url) {
-    const source = await fetch(media.url)
-    if (!source.ok) throw new Error(`Could not fetch hero image: ${source.status}`)
-    contentType = source.headers.get('content-type') || 'image/png'
-    bytes = Buffer.from(await source.arrayBuffer())
-  } else {
-    throw new Error('heroImage requires url or dataBase64')
-  }
-
-  if (!contentType.startsWith('image/')) throw new Error(`heroImage is not an image (${contentType})`)
-  const filename = media.filename || 'stonecomms-hero.jpg'
-  const uploaded = await sanity(`/v${apiVersion}/assets/images/${dataset}?filename=${encodeURIComponent(filename)}`, {
-    method: 'POST',
-    headers: {'content-type': contentType},
-    body: bytes,
-  })
-  const assetId = uploaded.document?._id
-  if (!assetId) throw new Error('Sanity image upload returned no asset id')
-  return assetId
-}
-
 const files = fs.readdirSync(dir).filter(f => f.endsWith('.json')).sort()
 for (const file of files) {
   const request = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'))
@@ -79,10 +52,10 @@ for (const file of files) {
 
   const set = {}
   if (request.heroImage) {
-    const assetId = await uploadImage(request.heroImage)
+    const uploaded = await uploadImageToSanity(request.heroImage, token)
     set.heroImage = {
       _type: 'image',
-      asset: {_type: 'reference', _ref: assetId},
+      asset: {_type: 'reference', _ref: uploaded.assetId},
       ...(request.heroImage.alt ? {alt: request.heroImage.alt} : {}),
       ...(request.heroImage.caption ? {caption: request.heroImage.caption} : {}),
       ...(request.heroImage.credit ? {credit: request.heroImage.credit} : {}),
