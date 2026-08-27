@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+      SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
