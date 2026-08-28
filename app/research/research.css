@@ -32,12 +32,17 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
 .metric:last-child{border-right:0}
 .metric strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:42px;line-height:1;color:#087b70;margin-bottom:8px}
 .metric span{font-size:11px;line-height:1.4;text-transform:uppercase;letter-spacing:.08em}
+.article-hero{width:min(1000px,100%);margin:70px auto 0}
+.article-hero img,.body-figure img{display:block;width:100%;height:auto}
+.article-hero figcaption,.body-figure figcaption,.figure-caption{margin:10px 0 0;color:#667477;font-size:12px;line-height:1.5}
 .article-content{width:min(760px,100%);margin:70px auto 0}
+.article-content-after-hero{margin-top:55px}
 .article-content p{font-family:Georgia,'Times New Roman',serif;font-size:19px;line-height:1.75;margin:0 0 25px;color:#172d31}
 .article-content h2{font-family:Georgia,'Times New Roman',serif;font-size:42px;line-height:1.08;letter-spacing:-.025em;margin:70px 0 25px}
 .article-content h3{font-size:13px;line-height:1.4;text-transform:uppercase;letter-spacing:.13em;color:#087b70;margin:45px 0 17px}
 .article-content blockquote{font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.35;font-style:italic;margin:50px -70px;padding:36px 45px;background:#10252a;color:#fff}
 .article-content a,.sources a{color:#087b70;text-underline-offset:3px}
+.body-figure{width:min(1000px,calc(100vw - 48px));margin:50px 50%;transform:translateX(-50%)}
 .data-table-wrap{width:min(1000px,calc(100vw - 48px));margin:50px 50%;transform:translateX(-50%);overflow-x:auto}
 .data-table{width:100%;border-collapse:collapse;font-size:13px;background:white}
 .data-table th{padding:15px;text-align:left;background:#10252a;color:white;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
@@ -69,10 +74,11 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
  .metrics{grid-template-columns:1fr}
  .metric,.metric+.metric{padding:20px 0;border-right:0;border-bottom:1px solid #82908d}
  .metric:last-child{border-bottom:0}
+ .article-hero{margin-top:45px}
  .article-content{margin-top:45px}
  .article-content p{font-size:18px}
  .article-content h2{font-size:35px;margin-top:55px}
  .article-content blockquote{margin:35px 0;padding:28px 24px;font-size:24px}
- .data-table-wrap{width:100%;margin:40px 0;transform:none}
+ .body-figure,.data-table-wrap{width:100%;margin:40px 0;transform:none}
  .panel{margin-top:50px;padding:30px 22px}
 }
