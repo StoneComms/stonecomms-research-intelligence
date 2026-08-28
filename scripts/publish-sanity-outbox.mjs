@@ -49,8 +49,14 @@ for (const file of files) {
     {slug: request.slug},
   )
   if (!document?._id) throw new Error(`${file}: publication not found for slug ${request.slug}`)
+  if (request.expectedTitle && document.title !== request.expectedTitle) {
+    throw new Error(`${file}: title precondition failed; expected ${request.expectedTitle}, found ${document.title}`)
+  }
 
   const set = {}
+  if (typeof request.title === 'string' && request.title.trim()) {
+    set.title = request.title.trim()
+  }
   for (const field of ['heroImage', 'illustrationMaster', 'pdfArtwork']) {
     const image = request[field]
     if (!image) continue
@@ -97,6 +103,9 @@ for (const file of files) {
 
   if (!verified?._id || !verified.heroAssetId || !verified.bodyCount) {
     throw new Error(`${file}: post-publish verification failed ${JSON.stringify(verified)}`)
+  }
+  if (request.title && verified.title !== request.title.trim()) {
+    throw new Error(`${file}: title verification failed ${JSON.stringify(verified)}`)
   }
 
   console.log(`Verified Sanity publication ${JSON.stringify(verified)}`)
