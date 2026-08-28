@@ -51,14 +51,16 @@ for (const file of files) {
   if (!document?._id) throw new Error(`${file}: publication not found for slug ${request.slug}`)
 
   const set = {}
-  if (request.heroImage) {
-    const uploaded = await uploadImageToSanity(request.heroImage, token)
-    set.heroImage = {
+  for (const field of ['heroImage', 'illustrationMaster', 'pdfArtwork']) {
+    const image = request[field]
+    if (!image) continue
+    const uploaded = await uploadImageToSanity(image, token)
+    set[field] = {
       _type: 'image',
       asset: {_type: 'reference', _ref: uploaded.assetId},
-      ...(request.heroImage.alt ? {alt: request.heroImage.alt} : {}),
-      ...(request.heroImage.caption ? {caption: request.heroImage.caption} : {}),
-      ...(request.heroImage.credit ? {credit: request.heroImage.credit} : {}),
+      ...(image.alt ? {alt: image.alt} : {}),
+      ...(image.caption ? {caption: image.caption} : {}),
+      ...(image.credit ? {credit: image.credit} : {}),
     }
   }
 
@@ -72,5 +74,30 @@ for (const file of files) {
     },
   }])
 
-  console.log(`Updated ${document.title || request.slug} from ${file}`)
+  const verified = await query(`
+    *[_type == "publication" && slug.current == $slug && !(_id in path("drafts.**"))][0]{
+      _id,
+      title,
+      "slug": slug.current,
+      publicationDate,
+      publicationType,
+      "heroAssetId": heroImage.asset->_id,
+      "heroUrl": heroImage.asset->url,
+      "masterAssetId": illustrationMaster.asset->_id,
+      "pdfArtworkAssetId": pdfArtwork.asset->_id,
+      "pdfUrl": pdfFile.asset->url,
+      "bodyCount": count(body),
+      "methodologyCount": count(methodology),
+      "limitationsCount": count(limitations),
+      "sourcesCount": count(sources),
+      "hasSourceNote": defined(sourceNote),
+      "hasSeo": defined(seo)
+    }
+  `, {slug: request.slug})
+
+  if (!verified?._id || !verified.heroAssetId || !verified.bodyCount) {
+    throw new Error(`${file}: post-publish verification failed ${JSON.stringify(verified)}`)
+  }
+
+  console.log(`Verified Sanity publication ${JSON.stringify(verified)}`)
 }

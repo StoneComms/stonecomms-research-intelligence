@@ -2,9 +2,22 @@
   "status": "ready",
   "slug": "open-before-it-locks-kenya-battery-swapping-interoperability",
   "heroImage": {
-    "url": "https://raw.githubusercontent.com/StoneComms/stonecomms-research-intelligence/main/sanity-media/2026-08-27-open-before-it-locks-hero.jpg",
-    "filename": "African-E-Mobility-Battery-Swap-Station.jpg",
-    "alt": "Illustrated electric motorcycle battery swap station in an African urban setting"
+    "url": "https://raw.githubusercontent.com/StoneComms/stonecomms-research-intelligence/main/sanity-media/2026-08-28-open-before-it-locks-hero.png",
+    "filename": "open-before-it-locks-kenya-battery-swapping-hero.png",
+    "alt": "Two electric motorcycle riders converge on a shared battery interface before separate systems lock in",
+    "credit": "StoneComms original editorial illustration"
   },
-  "retry": 2
+  "illustrationMaster": {
+    "url": "https://raw.githubusercontent.com/StoneComms/stonecomms-research-intelligence/main/sanity-media/2026-08-28-open-before-it-locks-master.png",
+    "filename": "open-before-it-locks-kenya-battery-swapping-master.png",
+    "alt": "Two electric motorcycle riders converge on a shared battery interface before separate systems lock in",
+    "credit": "StoneComms original editorial illustration"
+  },
+  "pdfArtwork": {
+    "url": "https://raw.githubusercontent.com/StoneComms/stonecomms-research-intelligence/main/sanity-media/2026-08-28-open-before-it-locks-pdf-artwork.png",
+    "filename": "open-before-it-locks-kenya-battery-swapping-pdf-artwork.png",
+    "alt": "Two electric motorcycle riders converge on a shared battery interface before separate systems lock in",
+    "credit": "StoneComms original editorial illustration"
+  },
+  "retry": 3
 }
