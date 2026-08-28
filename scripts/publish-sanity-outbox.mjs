@@ -99,15 +99,5 @@ for (const file of files) {
     throw new Error(`${file}: post-publish verification failed ${JSON.stringify(verified)}`)
   }
 
-  if (verified.pdfUrl) {
-    const pdfResponse = await fetch(verified.pdfUrl)
-    if (!pdfResponse.ok) throw new Error(`${file}: PDF verification download failed ${pdfResponse.status}`)
-    fs.mkdirSync('sanity-verification', {recursive: true})
-    fs.writeFileSync(
-      path.join('sanity-verification', `${request.slug}.pdf`),
-      Buffer.from(await pdfResponse.arrayBuffer()),
-    )
-  }
-
   console.log(`Verified Sanity publication ${JSON.stringify(verified)}`)
 }
