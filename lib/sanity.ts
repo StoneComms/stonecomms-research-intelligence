@@ -6,7 +6,7 @@ async function sanityQuery<T>(query: string, params: Record<string, string> = {}
   const usp = new URLSearchParams({query, perspective: 'published'})
   for (const [key, value] of Object.entries(params)) usp.set(`$${key}`, JSON.stringify(value))
   const url = `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}?${usp.toString()}`
-  const res = await fetch(url, {next: {revalidate: 60}})
+  const res = await fetch(url, {cache: 'no-store'})
   if (!res.ok) throw new Error(`Sanity query failed: ${res.status}`)
   const json = await res.json()
   return json.result as T

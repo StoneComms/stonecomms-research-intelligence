@@ -90,23 +90,20 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
 .pdf-download{
   display:inline-flex;
   align-items:center;
-  justify-content:center;
-  gap:9px;
+  gap:7px;
   width:fit-content;
-  margin:0 0 28px;
-  padding:13px 17px;
-  border:1px solid #10252a;
-  background:#10252a;
-  color:#fff;
+  margin:0 0 26px;
+  color:#087b70;
   text-decoration:none;
-  text-transform:none;
-  letter-spacing:0;
-  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:10px;
   font-weight:800;
-  line-height:1;
+  line-height:1.3;
+  border-bottom:1px solid rgba(8,123,112,.4);
 }
-.pdf-download:hover,.pdf-download:focus-visible{background:#087b70;border-color:#087b70;color:#fff}
-.card .pdf-download{margin:24px 0 28px}
+.pdf-download:hover,.pdf-download:focus-visible{color:#10252a;border-color:#10252a}
+.card .pdf-download{margin:14px 0 28px}
 .article-header .pdf-download{margin:0 0 28px}
 .article-hero{width:100%;max-width:none;margin:0 auto;background:#10252a}
 .article-hero img{width:100%;aspect-ratio:1800/1013;object-fit:cover}
@@ -114,7 +111,6 @@ main.section>.wrap>p{font-family:Georgia,'Times New Roman',serif!important;font-
 .article-content-after-hero{margin-top:70px}
 
 @media(max-width:800px){
-  .pdf-download{width:100%;min-height:44px}
   .card .pdf-download{margin-bottom:24px}
   .article-hero{width:calc(100% + 28px);margin-left:-14px}
   .article-content-after-hero{margin-top:48px}
