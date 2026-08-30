@@ -3,6 +3,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 
 const WEBFLOW_API = 'https://api.webflow.com/v2'
+const GRAPH_API = 'https://graph.microsoft.com/v1.0'
 
 function requiredEnv(name) {
   const value = process.env[name]
@@ -26,7 +27,6 @@ function isMicrosoftHosted(url) {
 function microsoftDownloadCandidates(sourceUrl) {
   const source = new URL(sourceUrl)
   const candidates = []
-
   const withDownload = new URL(source)
   if (!withDownload.searchParams.has('download')) withDownload.searchParams.set('download', '1')
   candidates.push(withDownload.toString())
@@ -41,7 +41,6 @@ function microsoftDownloadCandidates(sourceUrl) {
       candidates.push(`${source.origin}${siteBase}/_layouts/15/guestaccess.aspx?share=${encodeURIComponent(shareToken)}&download=1`)
     }
   }
-
   return [...new Set(candidates)]
 }
 
@@ -54,12 +53,10 @@ function validateMagic(buffer, contentType, fileName) {
   if (!buffer.length) throw new Error(`${fileName}: downloaded file is empty`)
   const lowerType = (contentType || '').toLowerCase()
   const lowerName = fileName.toLowerCase()
-
   if (lowerType === 'image/png' || lowerName.endsWith('.png')) {
     const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])
     if (buffer.length < 8 || !buffer.subarray(0, 8).equals(png)) throw new Error(`${fileName}: PNG signature validation failed`)
   }
-
   if (lowerType === 'application/pdf' || lowerName.endsWith('.pdf')) {
     if (!buffer.subarray(0, 5).equals(Buffer.from('%PDF-'))) throw new Error(`${fileName}: PDF header validation failed`)
     if (!buffer.subarray(Math.max(0, buffer.length - 4096)).includes(Buffer.from('%%EOF'))) throw new Error(`${fileName}: PDF EOF validation failed`)
@@ -73,44 +70,91 @@ async function fetchJson(url, options = {}) {
   if (text) {
     try { body = JSON.parse(text) } catch { body = text }
   }
-  if (!response.ok) {
-    throw new Error(`${options.method || 'GET'} ${url} failed (${response.status}): ${typeof body === 'string' ? body : JSON.stringify(body)}`)
-  }
+  if (!response.ok) throw new Error(`${options.method || 'GET'} ${url} failed (${response.status}): ${typeof body === 'string' ? body : JSON.stringify(body)}`)
   return body
 }
 
+async function getGraphToken() {
+  const tenant = process.env.MS_TENANT_ID
+  const clientId = process.env.MS_CLIENT_ID
+  const clientSecret = process.env.MS_CLIENT_SECRET
+  if (!tenant || !clientId || !clientSecret) return null
+
+  const body = new URLSearchParams({
+    client_id: clientId,
+    client_secret: clientSecret,
+    grant_type: 'client_credentials',
+    scope: 'https://graph.microsoft.com/.default',
+  })
+  const response = await fetch(`https://login.microsoftonline.com/${encodeURIComponent(tenant)}/oauth2/v2.0/token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  })
+  const json = await response.json()
+  if (!response.ok || !json.access_token) throw new Error(`Microsoft token request failed (${response.status}): ${JSON.stringify(json)}`)
+  return json.access_token
+}
+
+function encodedSharingUrl(sourceUrl) {
+  return `u!${Buffer.from(sourceUrl, 'utf8').toString('base64url')}`
+}
+
+async function downloadViaGraph(spec, graphToken) {
+  const shareId = encodedSharingUrl(spec.sourceUrl)
+  const response = await fetch(`${GRAPH_API}/shares/${encodeURIComponent(shareId)}/driveItem/content`, {
+    headers: { Authorization: `Bearer ${graphToken}` },
+    redirect: 'follow',
+  })
+  if (!response.ok) throw new Error(`${spec.fileName}: Microsoft Graph download failed (${response.status})`)
+  const buffer = Buffer.from(await response.arrayBuffer())
+  const responseType = (response.headers.get('content-type') || '').split(';')[0].trim()
+  return { buffer, responseType, sourceUrl: `${GRAPH_API}/shares/${shareId}/driveItem/content` }
+}
+
+function validateDownloaded(spec, buffer, responseType, resolvedSourceUrl) {
+  const contentType = spec.contentType || responseType || 'application/octet-stream'
+  validateMagic(buffer, contentType, spec.fileName)
+  if (Number.isInteger(spec.expectedBytes) && buffer.length !== spec.expectedBytes) {
+    throw new Error(`${spec.fileName}: expected ${spec.expectedBytes} bytes, received ${buffer.length}`)
+  }
+  const actualSha = sha256(buffer)
+  if (spec.sha256 && actualSha !== String(spec.sha256).toLowerCase()) {
+    throw new Error(`${spec.fileName}: SHA-256 mismatch (expected ${spec.sha256}, got ${actualSha})`)
+  }
+  return { buffer, contentType, sha256: actualSha, md5: md5(buffer), sourceUrl: resolvedSourceUrl }
+}
+
+let cachedGraphToken
 async function downloadAsset(spec) {
   if (!spec.sourceUrl || !spec.fileName) throw new Error('Each asset requires sourceUrl and fileName')
-
   const attempts = []
+
+  if (isMicrosoftHosted(spec.sourceUrl)) {
+    try {
+      cachedGraphToken ??= await getGraphToken()
+      if (cachedGraphToken) {
+        const graph = await downloadViaGraph(spec, cachedGraphToken)
+        return validateDownloaded(spec, graph.buffer, graph.responseType, graph.sourceUrl)
+      }
+    } catch (error) {
+      attempts.push(`Graph: ${error.message}`)
+    }
+  }
+
   for (const url of sourceCandidates(spec.sourceUrl)) {
     try {
       const response = await fetch(url, {
         redirect: 'follow',
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; StoneCommsPublisher/1.0)',
-          Accept: '*/*',
-        },
+        headers: { 'User-Agent': 'Mozilla/5.0 (compatible; StoneCommsPublisher/1.0)', Accept: '*/*' },
       })
       if (!response.ok) {
         attempts.push(`${response.status} ${url}`)
         continue
       }
-
       const buffer = Buffer.from(await response.arrayBuffer())
       const responseType = (response.headers.get('content-type') || '').split(';')[0].trim()
-      const contentType = spec.contentType || responseType || 'application/octet-stream'
-      validateMagic(buffer, contentType, spec.fileName)
-
-      if (Number.isInteger(spec.expectedBytes) && buffer.length !== spec.expectedBytes) {
-        throw new Error(`${spec.fileName}: expected ${spec.expectedBytes} bytes, received ${buffer.length}`)
-      }
-      const actualSha = sha256(buffer)
-      if (spec.sha256 && actualSha !== String(spec.sha256).toLowerCase()) {
-        throw new Error(`${spec.fileName}: SHA-256 mismatch (expected ${spec.sha256}, got ${actualSha})`)
-      }
-
-      return { buffer, contentType, sha256: actualSha, md5: md5(buffer), sourceUrl: url }
+      return validateDownloaded(spec, buffer, responseType, url)
     } catch (error) {
       attempts.push(`${error.message} [${url}]`)
     }
@@ -122,19 +166,12 @@ async function downloadAsset(spec) {
 async function createWebflowAsset(siteId, token, spec, downloaded) {
   const payload = { fileName: spec.fileName, fileHash: downloaded.md5 }
   if (spec.parentFolder) payload.parentFolder = spec.parentFolder
-
   const created = await fetchJson(`${WEBFLOW_API}/sites/${siteId}/assets`, {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify(payload),
   })
-
   if (!created?.id) throw new Error(`${spec.fileName}: Webflow did not return an asset id`)
-
   if (created.uploadUrl && created.uploadDetails) {
     const form = new FormData()
     for (const [key, value] of Object.entries(created.uploadDetails)) {
@@ -142,14 +179,10 @@ async function createWebflowAsset(siteId, token, spec, downloaded) {
     }
     const uploadType = created.uploadDetails['content-type'] || created.contentType || downloaded.contentType
     form.append('file', new Blob([downloaded.buffer], { type: uploadType }), spec.fileName)
-
     const uploadResponse = await fetch(created.uploadUrl, { method: 'POST', body: form, redirect: 'follow' })
     const uploadBody = await uploadResponse.text()
-    if (uploadResponse.status !== 201) {
-      throw new Error(`${spec.fileName}: Webflow S3 upload failed (${uploadResponse.status}): ${uploadBody.slice(0, 1000)}`)
-    }
+    if (uploadResponse.status !== 201) throw new Error(`${spec.fileName}: Webflow S3 upload failed (${uploadResponse.status}): ${uploadBody.slice(0, 1000)}`)
   }
-
   return created
 }
 
@@ -157,9 +190,7 @@ async function verifyWebflowAsset(assetId, token, expectedBytes, attempts = 12) 
   let last = null
   for (let i = 0; i < attempts; i++) {
     try {
-      last = await fetchJson(`${WEBFLOW_API}/assets/${assetId}`, {
-        headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
-      })
+      last = await fetchJson(`${WEBFLOW_API}/assets/${assetId}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } })
       if (last?.hostedUrl && Number(last?.size) === expectedBytes) return last
     } catch (error) {
       if (i === attempts - 1) throw error
@@ -195,12 +226,10 @@ for (const spec of manifest.assets) {
   console.log(`Downloading ${key} from source...`)
   const downloaded = await downloadAsset(spec)
   console.log(`${key}: ${downloaded.buffer.length} bytes, sha256=${downloaded.sha256}, md5=${downloaded.md5}`)
-
   const created = await createWebflowAsset(siteId, token, spec, downloaded)
   console.log(`${key}: Webflow asset metadata id=${created.id}`)
   const verified = await verifyWebflowAsset(created.id, token, downloaded.buffer.length)
   console.log(`${key}: verified Webflow asset ${verified.id} (${verified.size} bytes)`)
-
   references[key] = {
     id: verified.id,
     url: verified.hostedUrl,
