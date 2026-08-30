@@ -1,0 +1,22 @@
+{
+  "publicationSlug": "border-inside-factory-africa-production-systems",
+  "webflowSiteId": "6a92bcced2602b9436d924a5",
+  "assets": [
+    {
+      "key": "hero",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/:i:/g/personal/lee_stonecomms_com/IQC7CXtXr90rQYRN8ZITVB-KAb2XnkgyweOOaNYyDC5oNdM",
+      "fileName": "hero.png",
+      "contentType": "image/png",
+      "expectedBytes": 90521,
+      "sha256": "14fece4a4861d3d1df113f946999c5bef13549bef044945745e327d6386ed9e1"
+    },
+    {
+      "key": "pdf",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/:b:/g/personal/lee_stonecomms_com/IQAyuElD9_avTLm3BlK7pgzyASkChtul5w3KTT5mU3JKoyQ",
+      "fileName": "report.pdf",
+      "contentType": "application/pdf",
+      "expectedBytes": 303038,
+      "sha256": "1dd2d1d4648bc423bf8711a63285c127f3656d70cf139edcb3792e0215953df1"
+    }
+  ]
+}
