@@ -1,0 +1,92 @@
+name: Publish Webflow Research Text
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest_path:
+        description: Repository path to a Webflow research publication JSON manifest
+        required: true
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - 'webflow-publications/*.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: webflow-research-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Resolve publication manifest
+        id: manifest
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+          INPUT_MANIFEST_PATH: ${{ inputs.manifest_path }}
+        run: |
+          if [ "$EVENT_NAME" = "push" ]; then
+            if [ -n "$BEFORE_SHA" ] && ! echo "$BEFORE_SHA" | grep -Eq '^0+$'; then
+              mapfile -t changed < <(git diff --name-only "$BEFORE_SHA" "$CURRENT_SHA" -- 'webflow-publications/*.json')
+            else
+              mapfile -t changed < <(git show --pretty= --name-only "$CURRENT_SHA" -- 'webflow-publications/*.json')
+            fi
+            if [ "${#changed[@]}" -ne 1 ]; then
+              echo "Expected exactly one changed publication manifest; found ${#changed[@]}" >&2
+              exit 1
+            fi
+            manifest_path="${changed[0]}"
+          else
+            manifest_path="$INPUT_MANIFEST_PATH"
+          fi
+          if [ ! -f "$manifest_path" ]; then
+            echo "Publication manifest not found: $manifest_path" >&2
+            exit 1
+          fi
+          echo "manifest_path=$manifest_path" >> "$GITHUB_OUTPUT"
+
+      - name: Publish and verify Webflow CMS text
+        id: publish
+        env:
+          WEBFLOW_API_TOKEN: ${{ secrets.WEBFLOW_API_KEY }}
+          PUBLICATION_MANIFEST_PATH: ${{ steps.manifest.outputs.manifest_path }}
+          WEBFLOW_PUBLICATION_OUTPUT_PATH: webflow-publication-result.json
+        run: node scripts/publish-webflow-research.mjs
+
+      - name: Upload publication result
+        uses: actions/upload-artifact@v4
+        with:
+          name: webflow-publication-${{ github.run_id }}
+          path: webflow-publication-result.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Job summary
+        shell: bash
+        run: |
+          {
+            echo '## Webflow research publication complete'
+            echo
+            echo '```json'
+            cat webflow-publication-result.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
