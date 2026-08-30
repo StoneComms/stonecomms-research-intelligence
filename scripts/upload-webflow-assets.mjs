@@ -163,6 +163,26 @@ async function downloadAsset(spec) {
   throw new Error(`${spec.fileName}: all source download methods failed:\n- ${attempts.join('\n- ')}`)
 }
 
+function canonicalUploadFields(uploadDetails) {
+  const aliases = {
+    xAmzAlgorithm: 'X-Amz-Algorithm',
+    xAmzCredential: 'X-Amz-Credential',
+    xAmzDate: 'X-Amz-Date',
+    xAmzSignature: 'X-Amz-Signature',
+    xAmzSecurityToken: 'X-Amz-Security-Token',
+    successActionStatus: 'success_action_status',
+    contentType: 'content-type',
+    cacheControl: 'Cache-Control',
+    policy: 'Policy',
+  }
+  const fields = new Map()
+  for (const [key, value] of Object.entries(uploadDetails || {})) {
+    if (value === undefined || value === null) continue
+    fields.set(aliases[key] || key, String(value))
+  }
+  return fields
+}
+
 async function createWebflowAsset(siteId, token, spec, downloaded) {
   const payload = { fileName: spec.fileName, fileHash: downloaded.md5 }
   if (spec.parentFolder) payload.parentFolder = spec.parentFolder
@@ -173,14 +193,16 @@ async function createWebflowAsset(siteId, token, spec, downloaded) {
   })
   if (!created?.id) throw new Error(`${spec.fileName}: Webflow did not return an asset id`)
   if (created.uploadUrl && created.uploadDetails) {
+    const fields = canonicalUploadFields(created.uploadDetails)
+    const uploadType = fields.get('content-type') || fields.get('Content-Type') || created.contentType || downloaded.contentType
+
     const form = new FormData()
-    for (const [key, value] of Object.entries(created.uploadDetails)) {
-      if (value !== undefined && value !== null) form.append(key, String(value))
-    }
-    const uploadType = created.uploadDetails['content-type'] || created.contentType || downloaded.contentType
+    for (const [key, value] of fields) form.append(key, value)
     form.append('file', new Blob([downloaded.buffer], { type: uploadType }), spec.fileName)
-    const uploadResponse = await fetch(created.uploadUrl, { method: 'POST', body: form, redirect: 'follow' })
+
+    const uploadResponse = await fetch(created.uploadUrl, { method: 'POST', body: form, redirect: 'manual' })
     const uploadBody = await uploadResponse.text()
+    console.log(`${spec.fileName}: S3 upload status=${uploadResponse.status}, fields=${[...fields.keys()].join(',')}`)
     if (uploadResponse.status !== 201) throw new Error(`${spec.fileName}: Webflow S3 upload failed (${uploadResponse.status}): ${uploadBody.slice(0, 1000)}`)
   }
   return created
