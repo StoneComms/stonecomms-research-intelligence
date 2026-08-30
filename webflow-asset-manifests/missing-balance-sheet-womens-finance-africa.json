@@ -1,0 +1,23 @@
+{
+  "publicationSlug": "missing-balance-sheet-womens-finance-africa",
+  "webflowSiteId": "6a92bcced2602b9436d924a5",
+  "attempt": 1,
+  "assets": [
+    {
+      "key": "hero",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/personal/lee_stonecomms_com/Documents/StoneComms%20Publishing%20Bridge/missing-balance-sheet-womens-finance-africa-hero.png",
+      "fileName": "missing-balance-sheet-womens-finance-africa-hero.png",
+      "contentType": "image/png",
+      "expectedBytes": 14841,
+      "sha256": "803159c8cbf9ad8335ba7476674622838e4548f95742e172d1204576032362b0"
+    },
+    {
+      "key": "pdf",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/personal/lee_stonecomms_com/Documents/StoneComms%20Publishing%20Bridge/missing-balance-sheet-womens-finance-africa-report.pdf",
+      "fileName": "missing-balance-sheet-womens-finance-africa-report.pdf",
+      "contentType": "application/pdf",
+      "expectedBytes": 58558,
+      "sha256": "fe98099a0d72bf53b49e2d6ef378bfcc7ca74b5ea0b8d365093a35cbb42ff183"
+    }
+  ]
+}
