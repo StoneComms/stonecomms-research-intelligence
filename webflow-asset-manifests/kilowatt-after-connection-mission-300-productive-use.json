@@ -1,0 +1,23 @@
+{
+  "publicationSlug": "kilowatt-after-connection-mission-300-productive-use",
+  "webflowSiteId": "6a92bcced2602b9436d924a5",
+  "attempt": 1,
+  "assets": [
+    {
+      "key": "hero",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/personal/lee_stonecomms_com/Documents/StoneComms%20Publishing%20Bridge/kilowatt-after-connection-hero.png",
+      "fileName": "kilowatt-after-connection-hero.png",
+      "contentType": "image/png",
+      "expectedBytes": 155226,
+      "sha256": "adbb12703f72fa3161fb98c06182a590a2a9a68ea3f68f27092c54df5211a973"
+    },
+    {
+      "key": "pdf",
+      "sourceUrl": "https://stonecommslimited-my.sharepoint.com/personal/lee_stonecomms_com/Documents/StoneComms%20Publishing%20Bridge/kilowatt-after-connection-report.pdf",
+      "fileName": "kilowatt-after-connection-report.pdf",
+      "contentType": "application/pdf",
+      "expectedBytes": 345194,
+      "sha256": "8f7feda73b6a7b96a9204795d263fe211f91c7f953d7d1507e1f9b13840bfb28"
+    }
+  ]
+}
