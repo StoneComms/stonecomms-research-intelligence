@@ -7,8 +7,16 @@ on:
         description: Publication slug used for output metadata
         required: true
         type: string
+      webflow_site_id:
+        description: Optional Webflow site ID; falls back to repository variable WEBFLOW_SITE_ID
+        required: false
+        type: string
+      asset_manifest_json:
+        description: Optional JSON object with assets[]; overrides the convenience hero/PDF inputs below
+        required: false
+        type: string
       hero_url:
-        description: Public OneDrive/SharePoint view or direct URL for hero image
+        description: Convenience input - public OneDrive/SharePoint view or direct URL for hero image
         required: false
         type: string
       hero_file_name:
@@ -30,7 +38,7 @@ on:
         required: false
         type: string
       pdf_url:
-        description: Public OneDrive/SharePoint view or direct URL for PDF
+        description: Convenience input - public OneDrive/SharePoint view or direct URL for PDF
         required: false
         type: string
       pdf_file_name:
@@ -72,6 +80,7 @@ jobs:
         shell: bash
         env:
           PUBLICATION_SLUG: ${{ inputs.publication_slug }}
+          ASSET_MANIFEST_JSON: ${{ inputs.asset_manifest_json }}
           HERO_URL: ${{ inputs.hero_url }}
           HERO_FILE_NAME: ${{ inputs.hero_file_name }}
           HERO_CONTENT_TYPE: ${{ inputs.hero_content_type }}
@@ -84,35 +93,47 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('node:fs')
-          const assets = []
+
           function optionalInt(value) {
             if (!value) return undefined
             const n = Number(value)
             if (!Number.isInteger(n) || n < 1) throw new Error(`Invalid byte count: ${value}`)
             return n
           }
-          if (process.env.HERO_URL) {
-            assets.push({
-              key: 'hero',
-              sourceUrl: process.env.HERO_URL,
-              fileName: process.env.HERO_FILE_NAME || 'hero.png',
-              contentType: process.env.HERO_CONTENT_TYPE || 'image/png',
-              expectedBytes: optionalInt(process.env.HERO_EXPECTED_BYTES),
-              sha256: process.env.HERO_SHA256 || undefined,
-            })
+
+          let manifest
+          if (process.env.ASSET_MANIFEST_JSON?.trim()) {
+            manifest = JSON.parse(process.env.ASSET_MANIFEST_JSON)
+            if (!manifest.publicationSlug) manifest.publicationSlug = process.env.PUBLICATION_SLUG
+          } else {
+            const assets = []
+            if (process.env.HERO_URL) {
+              assets.push({
+                key: 'hero',
+                sourceUrl: process.env.HERO_URL,
+                fileName: process.env.HERO_FILE_NAME || 'hero.png',
+                contentType: process.env.HERO_CONTENT_TYPE || 'image/png',
+                expectedBytes: optionalInt(process.env.HERO_EXPECTED_BYTES),
+                sha256: process.env.HERO_SHA256 || undefined,
+              })
+            }
+            if (process.env.PDF_URL) {
+              assets.push({
+                key: 'pdf',
+                sourceUrl: process.env.PDF_URL,
+                fileName: process.env.PDF_FILE_NAME || 'report.pdf',
+                contentType: 'application/pdf',
+                expectedBytes: optionalInt(process.env.PDF_EXPECTED_BYTES),
+                sha256: process.env.PDF_SHA256 || undefined,
+              })
+            }
+            if (!assets.length) throw new Error('Provide asset_manifest_json or at least one of hero_url/pdf_url')
+            manifest = { publicationSlug: process.env.PUBLICATION_SLUG, assets }
           }
-          if (process.env.PDF_URL) {
-            assets.push({
-              key: 'pdf',
-              sourceUrl: process.env.PDF_URL,
-              fileName: process.env.PDF_FILE_NAME || 'report.pdf',
-              contentType: 'application/pdf',
-              expectedBytes: optionalInt(process.env.PDF_EXPECTED_BYTES),
-              sha256: process.env.PDF_SHA256 || undefined,
-            })
+
+          if (!Array.isArray(manifest.assets) || !manifest.assets.length) {
+            throw new Error('Manifest requires a non-empty assets[] array')
           }
-          if (!assets.length) throw new Error('At least one of hero_url or pdf_url is required')
-          const manifest = { publicationSlug: process.env.PUBLICATION_SLUG, assets }
           fs.writeFileSync('webflow-asset-manifest.json', JSON.stringify(manifest, null, 2) + '\n')
           NODE
           cat webflow-asset-manifest.json
@@ -120,7 +141,7 @@ jobs:
       - name: Upload and verify Webflow assets
         id: upload
         env:
-          WEBFLOW_SITE_ID: ${{ vars.WEBFLOW_SITE_ID }}
+          WEBFLOW_SITE_ID: ${{ inputs.webflow_site_id || vars.WEBFLOW_SITE_ID }}
           WEBFLOW_API_TOKEN: ${{ secrets.WEBFLOW_API_TOKEN }}
           ASSET_MANIFEST_PATH: webflow-asset-manifest.json
           WEBFLOW_ASSET_OUTPUT_PATH: webflow-asset-references.json
