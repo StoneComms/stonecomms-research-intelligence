@@ -208,18 +208,44 @@ async function createWebflowAsset(siteId, token, spec, downloaded) {
   return created
 }
 
-async function verifyWebflowAsset(assetId, token, expectedBytes, attempts = 12) {
+async function verifyWebflowAsset(created, token, downloaded, attempts = 12) {
   let last = null
+  const urls = [...new Set([created.assetUrl, created.hostedUrl].filter(Boolean))]
   for (let i = 0; i < attempts; i++) {
     try {
-      last = await fetchJson(`${WEBFLOW_API}/assets/${assetId}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } })
-      if (last?.hostedUrl && Number(last?.size) === expectedBytes) return last
+      last = await fetchJson(`${WEBFLOW_API}/assets/${created.id}`, { headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' } })
+      if (last?.hostedUrl && Number(last?.size) === downloaded.buffer.length) return last
     } catch (error) {
-      if (i === attempts - 1) throw error
+      if (i === attempts - 1 && !urls.length) throw error
     }
+
+    for (const url of urls) {
+      try {
+        const checkUrl = new URL(url)
+        checkUrl.searchParams.set('wfverify', `${Date.now()}-${i}`)
+        const response = await fetch(checkUrl, {
+          redirect: 'follow',
+          headers: { 'Cache-Control': 'no-cache', Accept: '*/*' },
+        })
+        if (!response.ok) continue
+        const stored = Buffer.from(await response.arrayBuffer())
+        if (stored.length !== downloaded.buffer.length) continue
+        if (sha256(stored) !== downloaded.sha256) continue
+        return {
+          ...(last || {}),
+          id: created.id,
+          hostedUrl: created.hostedUrl || last?.hostedUrl || created.assetUrl,
+          contentType: last?.contentType || created.contentType || downloaded.contentType,
+          size: stored.length,
+        }
+      } catch {
+        // Retry while Webflow/S3 propagation completes.
+      }
+    }
+
     await new Promise(resolve => setTimeout(resolve, Math.min(1000 * (i + 1), 5000)))
   }
-  throw new Error(`Webflow asset ${assetId} failed verification: expected ${expectedBytes} bytes, got ${last?.size ?? 'unknown'}`)
+  throw new Error(`Webflow asset ${created.id} failed byte verification: expected ${downloaded.buffer.length} bytes; API reported ${last?.size ?? 'unknown'}`)
 }
 
 function loadManifest() {
@@ -250,8 +276,8 @@ for (const spec of manifest.assets) {
   console.log(`${key}: ${downloaded.buffer.length} bytes, sha256=${downloaded.sha256}, md5=${downloaded.md5}`)
   const created = await createWebflowAsset(siteId, token, spec, downloaded)
   console.log(`${key}: Webflow asset metadata id=${created.id}`)
-  const verified = await verifyWebflowAsset(created.id, token, downloaded.buffer.length)
-  console.log(`${key}: verified Webflow asset ${verified.id} (${verified.size} bytes)`)
+  const verified = await verifyWebflowAsset(created, token, downloaded)
+  console.log(`${key}: verified stored Webflow asset ${verified.id} (${verified.size} bytes)`)
   references[key] = {
     id: verified.id,
     url: verified.hostedUrl,
