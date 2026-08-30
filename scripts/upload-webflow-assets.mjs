@@ -23,12 +23,31 @@ function isMicrosoftHosted(url) {
   return host.endsWith('.sharepoint.com') || host.endsWith('.1drv.ms') || host.endsWith('.onedrive.live.com')
 }
 
-function downloadableUrl(sourceUrl) {
-  const url = new URL(sourceUrl)
-  if (isMicrosoftHosted(sourceUrl) && !url.searchParams.has('download')) {
-    url.searchParams.set('download', '1')
+function microsoftDownloadCandidates(sourceUrl) {
+  const source = new URL(sourceUrl)
+  const candidates = []
+
+  const withDownload = new URL(source)
+  if (!withDownload.searchParams.has('download')) withDownload.searchParams.set('download', '1')
+  candidates.push(withDownload.toString())
+
+  if (source.hostname.toLowerCase().endsWith('.sharepoint.com')) {
+    const parts = source.pathname.split('/').filter(Boolean)
+    const shareToken = parts.at(-1)
+    const personalIndex = parts.indexOf('personal')
+    if (shareToken && personalIndex >= 0 && parts.length > personalIndex + 2) {
+      const siteBase = `/${parts.slice(0, personalIndex + 2).join('/')}`
+      candidates.push(`${source.origin}${siteBase}/_layouts/15/download.aspx?share=${encodeURIComponent(shareToken)}`)
+      candidates.push(`${source.origin}${siteBase}/_layouts/15/guestaccess.aspx?share=${encodeURIComponent(shareToken)}&download=1`)
+    }
   }
-  return url.toString()
+
+  return [...new Set(candidates)]
+}
+
+function sourceCandidates(sourceUrl) {
+  if (!isMicrosoftHosted(sourceUrl)) return [sourceUrl]
+  return microsoftDownloadCandidates(sourceUrl)
 }
 
 function validateMagic(buffer, contentType, fileName) {
@@ -62,30 +81,46 @@ async function fetchJson(url, options = {}) {
 
 async function downloadAsset(spec) {
   if (!spec.sourceUrl || !spec.fileName) throw new Error('Each asset requires sourceUrl and fileName')
-  const url = downloadableUrl(spec.sourceUrl)
-  const response = await fetch(url, { redirect: 'follow' })
-  if (!response.ok) throw new Error(`${spec.fileName}: source download failed (${response.status})`)
-  const buffer = Buffer.from(await response.arrayBuffer())
-  const responseType = (response.headers.get('content-type') || '').split(';')[0].trim()
-  const contentType = spec.contentType || responseType || 'application/octet-stream'
-  validateMagic(buffer, contentType, spec.fileName)
 
-  if (Number.isInteger(spec.expectedBytes) && buffer.length !== spec.expectedBytes) {
-    throw new Error(`${spec.fileName}: expected ${spec.expectedBytes} bytes, received ${buffer.length}`)
-  }
-  const actualSha = sha256(buffer)
-  if (spec.sha256 && actualSha !== String(spec.sha256).toLowerCase()) {
-    throw new Error(`${spec.fileName}: SHA-256 mismatch (expected ${spec.sha256}, got ${actualSha})`)
+  const attempts = []
+  for (const url of sourceCandidates(spec.sourceUrl)) {
+    try {
+      const response = await fetch(url, {
+        redirect: 'follow',
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; StoneCommsPublisher/1.0)',
+          Accept: '*/*',
+        },
+      })
+      if (!response.ok) {
+        attempts.push(`${response.status} ${url}`)
+        continue
+      }
+
+      const buffer = Buffer.from(await response.arrayBuffer())
+      const responseType = (response.headers.get('content-type') || '').split(';')[0].trim()
+      const contentType = spec.contentType || responseType || 'application/octet-stream'
+      validateMagic(buffer, contentType, spec.fileName)
+
+      if (Number.isInteger(spec.expectedBytes) && buffer.length !== spec.expectedBytes) {
+        throw new Error(`${spec.fileName}: expected ${spec.expectedBytes} bytes, received ${buffer.length}`)
+      }
+      const actualSha = sha256(buffer)
+      if (spec.sha256 && actualSha !== String(spec.sha256).toLowerCase()) {
+        throw new Error(`${spec.fileName}: SHA-256 mismatch (expected ${spec.sha256}, got ${actualSha})`)
+      }
+
+      return { buffer, contentType, sha256: actualSha, md5: md5(buffer), sourceUrl: url }
+    } catch (error) {
+      attempts.push(`${error.message} [${url}]`)
+    }
   }
 
-  return { buffer, contentType, sha256: actualSha, md5: md5(buffer), sourceUrl: url }
+  throw new Error(`${spec.fileName}: all source download methods failed:\n- ${attempts.join('\n- ')}`)
 }
 
 async function createWebflowAsset(siteId, token, spec, downloaded) {
-  const payload = {
-    fileName: spec.fileName,
-    fileHash: downloaded.md5,
-  }
+  const payload = { fileName: spec.fileName, fileHash: downloaded.md5 }
   if (spec.parentFolder) payload.parentFolder = spec.parentFolder
 
   const created = await fetchJson(`${WEBFLOW_API}/sites/${siteId}/assets`, {
@@ -108,11 +143,7 @@ async function createWebflowAsset(siteId, token, spec, downloaded) {
     const uploadType = created.uploadDetails['content-type'] || created.contentType || downloaded.contentType
     form.append('file', new Blob([downloaded.buffer], { type: uploadType }), spec.fileName)
 
-    const uploadResponse = await fetch(created.uploadUrl, {
-      method: 'POST',
-      body: form,
-      redirect: 'follow',
-    })
+    const uploadResponse = await fetch(created.uploadUrl, { method: 'POST', body: form, redirect: 'follow' })
     const uploadBody = await uploadResponse.text()
     if (uploadResponse.status !== 201) {
       throw new Error(`${spec.fileName}: Webflow S3 upload failed (${uploadResponse.status}): ${uploadBody.slice(0, 1000)}`)
@@ -181,14 +212,11 @@ for (const spec of manifest.assets) {
     md5: downloaded.md5,
     sha256: downloaded.sha256,
     sourceUrl: spec.sourceUrl,
+    resolvedSourceUrl: downloaded.sourceUrl,
   }
 }
 
-const result = {
-  siteId,
-  publicationSlug: manifest.publicationSlug || null,
-  assets: references,
-}
+const result = { siteId, publicationSlug: manifest.publicationSlug || null, assets: references }
 const outputPath = process.env.WEBFLOW_ASSET_OUTPUT_PATH || 'webflow-asset-references.json'
 fs.writeFileSync(outputPath, `${JSON.stringify(result, null, 2)}\n`, 'utf8')
 writeGithubOutput('asset_references', JSON.stringify(result))
