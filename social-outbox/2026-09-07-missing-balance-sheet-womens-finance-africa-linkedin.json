@@ -1,8 +1,21 @@
 {
-  "status": "ready",
-  "channels": ["linkedin"],
+  "status": "processed",
+  "channels": [
+    "linkedin"
+  ],
   "articleUrl": "https://stonecomms.com/research/missing-balance-sheet-womens-finance-africa",
   "scheduledFor": "2026-09-07T12:00:00+01:00",
   "text": "Africa’s women-business finance market is attracting smarter capital. The next bottleneck may be whether lenders can see enough viable firms to finance.\n\nIn August 2026, IFC announced its first African transactions under the Catalytic First Loss Guarantee programme. Across 4G Capital, Equity Bank Kenya and KCB Bank Kenya, IFC committed US$24.2 million backed by US$11 million from the IDA Private Sector Window, with the package expected to catalyse about US$144.4 million of local-currency lending.\n\nThat changes the lender’s downside. But a guarantee cannot by itself give an entrepreneur recognised identification, a registered enterprise, usable cash-flow data, collateral or a credible alternative, a product that fits her business cycle, or access to a market large enough to justify borrowing.\n\nThe evidence shows why those layers matter. World Bank data put women’s account ownership in sub-Saharan Africa at 52.3% in 2024, compared with 64.4% for men — a 12.1 percentage-point gap. At the same time, the African Development Bank’s AFAWA platform reports more than US$1.5 billion disbursed to over 26,000 women-led SMEs across 44 countries.\n\nUNECA’s current work in Sierra Leone and The Gambia points to collateral, identity, digital access, financial literacy, care responsibilities, product design, sex-disaggregated data, infrastructure and coordination as interacting constraints.\n\nStoneComms’ conclusion is that the next unit of gender-lens finance should be the financeability stack — the conditions that allow capital to recognise, price, reach and grow a business.\n\nWe propose six layers:\n\nPROVE — identity and enterprise recognition.\nSEE — usable cash-flow and sex-disaggregated data.\nSHARE — allocate risk through guarantees and blended finance.\nFIT — design products around the actual business.\nCONNECT — link finance to procurement, trade and market access.\nEMBED — put inclusion into budgets, regulation and accountability.\n\nIf risk-sharing improves but approvals do not, where did exclusion migrate? If a credit line exists but firms remain invisible to underwriting, what should public capital fund next?\n\nThe next KPI should be a conversion funnel, not only a disbursement total: identifiable firms, registered firms, assessed applicants, offers, disbursements, repeat borrowing, repayment and growth.\n\nFor governments, banks and DFIs, the strategic question is whether we are financing loans — or building the system that turns viable women-owned firms into investable borrowers.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/missing-balance-sheet-womens-finance-africa\n\n#GenderLensInvesting #SMEFinance #Africa #DevelopmentFinance #WomenInBusiness",
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-08-31T12:41:53.018Z",
+  "duplicate": true,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "duplicate",
+      "postId": "6a95767c86ef7aa882178a05",
+      "dueAt": "2026-09-07T11:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }
