@@ -13,6 +13,7 @@ const CHANNELS = {
 }
 
 const LINKEDIN_MIN_SPACING_MS = 48 * 60 * 60 * 1000
+const ACTIVE_POST_STATUSES = ['scheduled', 'sending', 'sent']
 
 async function gql(query, variables = {}) {
   const response = await fetch(endpoint, {
@@ -48,6 +49,7 @@ function normalizeUrl(value) {
   if (!value || typeof value !== 'string') return null
   try {
     const url = new URL(value)
+    if (!['http:', 'https:'].includes(url.protocol)) return null
     url.hash = ''
     url.hostname = url.hostname.toLowerCase()
     if (url.hostname.startsWith('www.')) url.hostname = url.hostname.slice(4)
@@ -89,7 +91,7 @@ async function fetchChannelPosts(organizationId, channelId) {
         pageInfo { endCursor hasNextPage }
       }
     }`, {
-      input: {organizationId, filter: {channelIds: [channelId]}},
+      input: {organizationId, filter: {channelIds: [channelId], status: ACTIVE_POST_STATUSES}},
       first: 100,
       after,
     })
