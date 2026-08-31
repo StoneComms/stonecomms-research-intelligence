@@ -8,7 +8,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: buffer-social-outbox
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -19,6 +23,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Publish new outbox requests
         run: node scripts/publish-buffer-outbox.mjs
+
+      - name: Persist processed outbox state
+        if: always()
+        shell: bash
+        run: |
+          if git diff --quiet -- social-outbox; then
+            echo "No outbox state changes to persist"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add social-outbox/*.json
+          git commit -m "Mark Buffer outbox requests processed [skip ci]"
+          git push
