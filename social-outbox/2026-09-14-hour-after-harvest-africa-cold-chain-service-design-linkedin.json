@@ -1,10 +1,21 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
   "articleUrl": "https://stonecomms.com/research/hour-after-harvest-africa-cold-chain-service-design",
   "scheduledFor": "2026-09-14T12:00:00+01:00",
   "text": "Africa's cold-chain problem is usually photographed as a missing machine. The harder failure is a missing service.\n\nA cold room can be installed, commissioned and technically efficient — and still sit empty.\n\nThe need is enormous. The 2025 Africa Regional Overview of Food Security and Nutrition, published in 2026, estimates that 306.5 million Africans were undernourished in 2024. A 2025 World Bank study estimates that 37% of locally produced food is lost or wasted because of inadequate storage. Sustainable Energy for All estimates that around 315 million rural people in Sub-Saharan Africa could benefit directly from electricity-enabled cooling and wider cold-chain access.\n\nBut those numbers do not mean every cold-room project is viable.\n\nThe strongest caution is utilisation. The Africa Centre of Excellence for Sustainable Cooling and Cold-Chain's 2024–25 review cites a World Bank estimate that at least 96% of targeted farmer communities did not use ten cold rooms financed in Rwanda in preceding years. It also reports that about 72% of Rwanda's cold-storage capacity served flowers. Those are portfolio- and country-specific figures, not a continental failure rate. Their lesson is narrower: commissioned equipment is not evidence of an operating service.\n\nStoneComms' central conclusion is simple: the product is not cold. It is time with options.\n\nCooling can give a farmer, fisher or trader time to aggregate, grade, wait for transport, reach a processor or better buyer, and avoid a forced sale as the product deteriorates. But cold storage cannot create a missing market. It cannot repair a bad road, an unaffordable tariff, the wrong temperature range, weak maintenance, or absent working capital.\n\nSo we propose a six-part Cold-Chain Service Test:\n\nFLOW — is there enough compatible product at usable intervals?\nTIME — what is an extra hour or day actually worth?\nMARKET — is there a credible transaction after storage?\nOPERATE — can one entity deliver dependable, safe service?\nCLEAN FINANCE — does capital match the operating and climate risk?\nVALUE — who gains, who pays, and what will be verified?\n\nA facility that cannot pass those tests is not yet food-system infrastructure, however advanced its machinery.\n\nThe investment question should move from “how many units can we install?” to “how much valuable time can this service reliably sell, to whom, and who captures the value?”\n\nWhat would you make the first gating metric for a cold-chain investment: utilisation, avoided loss, producer income, or something else?\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/hour-after-harvest-africa-cold-chain-service-design\n\n#AfricanInfrastructure #FoodSystems #ColdChain #ClimateFinance #Agriculture",
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-09-03T11:00:39.943Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6a9953577ac89b343be2eb7b",
+      "dueAt": "2026-09-14T11:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }
