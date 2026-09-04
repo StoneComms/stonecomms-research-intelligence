@@ -1,0 +1,45 @@
+name: Publish Lee personal LinkedIn roundup via Buffer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'personal-social-outbox/*.json'
+      - 'scripts/publish-buffer-personal-outbox.mjs'
+      - '.github/workflows/buffer-publish-personal.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: buffer-personal-social-outbox
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish Lee personal LinkedIn requests
+        run: node scripts/publish-buffer-personal-outbox.mjs
+
+      - name: Persist processed personal outbox state
+        if: always()
+        shell: bash
+        run: |
+          if git diff --quiet -- personal-social-outbox; then
+            echo "No personal outbox state changes to persist"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add personal-social-outbox/*.json
+          git commit -m "Mark Lee personal Buffer request processed [skip ci]"
+          git push
