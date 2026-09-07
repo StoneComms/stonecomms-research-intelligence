@@ -17,6 +17,25 @@ The GitHub Actions workflow publishes `status: ready` requests, then rewrites su
 
 For StoneComms LinkedIn, fixed-time posts are protected by a hard 48-hour spacing check against the LinkedIn Page posts currently visible through Buffer. A request that would sit less than 48 hours from another LinkedIn Page post is rejected rather than silently moved.
 
+## Research attribution and UTM convention
+
+Keep `articleUrl` clean and canonical. Never add tracking parameters to `articleUrl`, because it is also used for duplicate detection.
+
+For every new research social post, create a separate tracked destination URL using:
+
+- `utm_source`: the platform, for example `linkedin`
+- `utm_medium`: `organic_social`
+- `utm_campaign`: the exact StoneComms research slug
+- `utm_content`: a unique post identifier, normally `<YYYY-MM-DD>-main-post`; use a different value for later reposts, personal roundups, or variants
+
+Example:
+
+`https://stonecomms.com/research/example-research-slug?utm_source=linkedin&utm_medium=organic_social&utm_campaign=example-research-slug&utm_content=2026-09-02-main-post`
+
+For LinkedIn posts without separate media, set `linkAttachment.url` to the tracked URL while leaving `articleUrl` canonical. If a non-empty `media` array is used, do not add `linkAttachment`; use the tracked URL in the visible post text instead. LinkedIn link attachments and non-empty media arrays are mutually exclusive in Buffer.
+
+This convention is intended to preserve robust Buffer deduplication while allowing GA4 or another analytics layer to attribute visits to an individual report and social post once analytics is enabled.
+
 ## Optional fields
 
 - `mode`: `addToQueue` (default), `shareNow`, `shareNext`, or `customScheduled`. If `scheduledFor` is present, omit `mode` or set it to `customScheduled`.
@@ -50,7 +69,7 @@ If an entity cannot be positively resolved, leave it as ordinary natural-languag
   "channels": ["linkedin"],
   "articleUrl": "https://www.stonecomms.com/research/example-research-slug",
   "scheduledFor": "2026-09-02T12:00:00+01:00",
-  "text": "Final approved LinkedIn copy mentioning IFC - International Finance Corporation naturally in the text.\n\nRead the full StoneComms research: https://www.stonecomms.com/research/example-research-slug\n\n#AfricanInfrastructure #ClimateFinance",
+  "text": "Final approved LinkedIn copy mentioning IFC - International Finance Corporation naturally in the text.\n\nRead the full StoneComms research: https://www.stonecomms.com/research/example-research-slug?utm_source=linkedin&utm_medium=organic_social&utm_campaign=example-research-slug&utm_content=2026-09-02-main-post\n\n#AfricanInfrastructure #ClimateFinance",
   "linkedinMentions": [
     {
       "id": "1521226",
