@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -9,5 +9,16 @@
   "linkAttachment": {
     "url": "https://stonecomms.com/research/infrastructure-with-roots-africa-nature-based-resilience?utm_source=linkedin&utm_medium=organic_social&utm_campaign=infrastructure-with-roots-africa-nature-based-resilience&utm_content=2026-09-16-main-post"
   },
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-09-08T11:02:03.660Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6a9feb2bd6d1ee3cc45b833b",
+      "dueAt": "2026-09-16T11:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }
