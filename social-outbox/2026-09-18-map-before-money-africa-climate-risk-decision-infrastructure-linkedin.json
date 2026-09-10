@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -9,5 +9,16 @@
   "linkAttachment": {
     "url": "https://stonecomms.com/research/map-before-money-africa-climate-risk-decision-infrastructure?utm_source=linkedin&utm_medium=organic_social&utm_campaign=map-before-money-africa-climate-risk-decision-infrastructure&utm_content=2026-09-18-main-post"
   },
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-09-10T11:02:59.969Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6aa28e63040fb46f1401ae07",
+      "dueAt": "2026-09-18T11:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }
