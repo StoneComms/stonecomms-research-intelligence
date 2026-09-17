@@ -1,0 +1,66 @@
+name: Buffer status audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/buffer-status-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Read StoneComms LinkedIn post status
+        shell: bash
+        run: |
+          node <<'NODE'
+          const endpoint = 'https://api.buffer.com'
+          const token = process.env.BUFFER_API_KEY
+          if (!token) throw new Error('BUFFER_API_KEY is not configured')
+          async function gql(query, variables = {}) {
+            const response = await fetch(endpoint, {
+              method: 'POST',
+              headers: {'content-type':'application/json', authorization:`Bearer ${token}`},
+              body: JSON.stringify({query, variables}),
+            })
+            const payload = await response.json()
+            if (!response.ok || payload.errors?.length) throw new Error(JSON.stringify(payload.errors || payload))
+            return payload.data
+          }
+          const orgData = await gql(`query { account { organizations { id name } } }`)
+          let target = null
+          for (const org of orgData.account.organizations) {
+            const channelData = await gql(`query GetChannels($organizationId: OrganizationId!) {
+              channels(input: {organizationId: $organizationId}) { id name displayName service }
+            }`, {organizationId: org.id})
+            const match = channelData.channels.find(c => c.service === 'linkedin' && /stonecomms/i.test(`${c.name} ${c.displayName}`))
+            if (match) { target = {organizationId: org.id, channelId: match.id}; break }
+          }
+          if (!target) throw new Error('StoneComms LinkedIn channel not found')
+          let after = null
+          const rows = []
+          do {
+            const data = await gql(`query GetPosts($input: PostsInput!, $first: Int, $after: String) {
+              posts(input: $input, first: $first, after: $after) {
+                edges { cursor node { text dueAt sentAt status externalLink } }
+                pageInfo { endCursor hasNextPage }
+              }
+            }`, {
+              input: {organizationId: target.organizationId, filter: {channelIds: [target.channelId], status: ['scheduled','sending','sent']}},
+              first: 100,
+              after,
+            })
+            rows.push(...data.posts.edges.map(e => e.node))
+            after = data.posts.pageInfo.hasNextPage ? data.posts.pageInfo.endCursor : null
+          } while (after)
+          for (const p of rows) {
+            const urls = String(p.text || '').match(/https:\/\/[^\s)\]}>,]+/g) || []
+            console.log(JSON.stringify({status:p.status,dueAt:p.dueAt||null,sentAt:p.sentAt||null,externalLink:p.externalLink||null,urls,text:String(p.text||'').slice(0,180)}))
+          }
+          NODE
