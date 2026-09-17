@@ -2,6 +2,8 @@
   "collectionId": "6a92be796568d7e2b412157f",
   "liveUrl": "https://stonecomms.com/research/missing-span-africa-power-interconnectors-electricity-markets",
   "fieldData": {
+    "name": "The missing span",
+    "slug": "missing-span-africa-power-interconnectors-electricity-markets",
     "standfirst": "Africa is joining national grids into regional power systems. The next test is whether electricity can move through them reliably, be paid for, and reach the people and firms whose demand justified the investment. StoneComms examines the missing span between an interconnector's completion and a functioning market.",
     "subtitle": "Why Africa's power interconnectors need markets, payment security and local delivery—not only steel",
     "publication-date": "2026-09-14T00:00:00.000Z",
@@ -18,8 +20,6 @@
     "featured": true,
     "seo-title": "Africa's power interconnectors and electricity markets | StoneComms R&I",
     "seo-description": "StoneComms examines why Africa's cross-border power lines create value only when every corridor segment, market rule, payment mechanism and local network is ready.",
-    "article-url": "https://stonecomms.com/research/missing-span-africa-power-interconnectors-electricity-markets",
-    "name": "The missing span",
-    "slug": "missing-span-africa-power-interconnectors-electricity-markets"
+    "article-url": "https://stonecomms.com/research/missing-span-africa-power-interconnectors-electricity-markets"
   }
 }
