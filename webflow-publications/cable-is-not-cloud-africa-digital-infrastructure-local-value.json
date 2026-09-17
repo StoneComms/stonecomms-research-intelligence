@@ -2,6 +2,8 @@
   "collectionId": "6a92be796568d7e2b412157f",
   "liveUrl": "https://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value",
   "fieldData": {
+    "name": "The cable is not the cloud",
+    "slug": "cable-is-not-cloud-africa-digital-infrastructure-local-value",
     "standfirst": "Submarine cables have redrawn Africa's connectivity map. The next investment test is whether bandwidth can leave the landing station, be exchanged and processed locally, reach firms at a competitive price, and support work that generates income. Djibouti's exceptional cable position shows why geography creates an option—not an outcome.",
     "subtitle": "Why Africa's international bandwidth needs power, exchange points, domestic networks and productive demand to create local value",
     "publication-date": "2026-09-17T00:00:00.000Z",
@@ -18,8 +20,6 @@
     "featured": true,
     "seo-title": "Africa's submarine cables and local digital value | StoneComms R&I",
     "seo-description": "StoneComms examines why Africa's submarine bandwidth creates local value only when power, open gateways, exchange points, domestic networks and productive demand work together.",
-    "article-url": "https://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value",
-    "name": "The cable is not the cloud",
-    "slug": "cable-is-not-cloud-africa-digital-infrastructure-local-value"
+    "article-url": "https://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value"
   }
 }
