@@ -39,10 +39,7 @@ function extractHttpsUrls(text) {
 }
 
 function dedupeKeys(request) {
-  const values = [
-    ...(Array.isArray(request.dedupeUrls) ? request.dedupeUrls : []),
-    ...extractHttpsUrls(request.text),
-  ]
+  const values = Array.isArray(request.dedupeUrls) ? request.dedupeUrls : []
   return [...new Set(values.map(normalizeUrl).filter(Boolean))]
 }
 
