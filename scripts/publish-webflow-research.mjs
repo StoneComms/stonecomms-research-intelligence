@@ -3,6 +3,7 @@ import crypto from 'node:crypto'
 
 const WEBFLOW_API = 'https://api.webflow.com/v2'
 const PUBLIC_SITE_ORIGIN = 'https://stonecomms.com'
+const RESEARCH_COLLECTION_ID = '6a92be796568d7e2b412157f'
 
 function requiredEnv(name) {
   const value = process.env[name]
@@ -100,11 +101,13 @@ const { manifestPath, manifest } = loadManifest()
 validateManifest(manifest)
 
 const collectionId = manifest.collectionId
-const canonicalUrl = `${PUBLIC_SITE_ORIGIN}/research/${encodeURIComponent(manifest.fieldData.slug)}`
-const fieldData = {
-  ...manifest.fieldData,
-  'article-url': canonicalUrl,
-}
+const isResearchPublication = collectionId === RESEARCH_COLLECTION_ID
+const canonicalUrl = isResearchPublication
+  ? `${PUBLIC_SITE_ORIGIN}/research/${encodeURIComponent(manifest.fieldData.slug)}`
+  : manifest.liveUrl
+const fieldData = isResearchPublication
+  ? { ...manifest.fieldData, 'article-url': canonicalUrl }
+  : { ...manifest.fieldData }
 const existing = (await listAllItems(collectionId, token)).filter(item => item?.fieldData?.slug === fieldData.slug)
 if (existing.length > 1) throw new Error(`Found ${existing.length} items with slug ${fieldData.slug}; refusing an ambiguous update`)
 
@@ -140,7 +143,7 @@ const verified = await fetchJson(`${WEBFLOW_API}/collections/${collectionId}/ite
 })
 if (verified?.fieldData?.slug !== fieldData.slug) throw new Error('Staged verification returned the wrong slug')
 if (!verified?.lastPublished) throw new Error('Webflow item has no lastPublished timestamp after publication')
-if (verified?.fieldData?.['article-url'] !== canonicalUrl) throw new Error('Webflow item does not contain the canonical production article URL')
+if (isResearchPublication && verified?.fieldData?.['article-url'] !== canonicalUrl) throw new Error('Webflow item does not contain the canonical production article URL')
 
 const publicVerification = await verifyPublicPage(canonicalUrl, fieldData.name)
 const result = {
