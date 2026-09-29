@@ -64,6 +64,9 @@ jobs:
           fi
           echo "manifest_path=$manifest_path" >> "$GITHUB_OUTPUT"
 
+      - name: Check publication field mapping (offline)
+        run: npm test
+
       - name: Publish and verify Webflow CMS text
         id: publish
         env:
