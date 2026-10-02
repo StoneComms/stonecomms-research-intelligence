@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -9,5 +9,16 @@
     "url": "https://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability?utm_source=linkedin&utm_medium=organic_social&utm_campaign=connecting-african-schools-procurement-power-service-accountability&utm_content=2026-10-08-main-post"
   },
   "linkedinMentions": [],
-  "text": "Connecting a school to the internet is not the same as giving that school a dependable digital service.\n\nThat distinction sits at the centre of our latest education-infrastructure research.\n\nUNICEF's September procurement invites 96 prequalified companies to bid for long-term agreements covering connectivity, on-site networks and solar power across all 54 African countries. The potential universe is enormous: more than 860,000 schools and 260,000 health facilities.\n\nThe scale is impressive. The institutional design matters more.\n\nA school can sit inside mobile-broadband coverage and still lack affordable service, reliable electricity, working local networks, trained staff or the budget to repair equipment when something fails.\n\nThat is why counting installations can overstate progress.\n\nStoneComms proposes a Connected-School Accountability Contract built around five questions: does the service reach the right school; is the site ready to use it; is it reliable; is it actually used in teaching and administration; and can it be renewed and maintained after the first contract period?\n\nThe procurement already moves in a useful direction by combining connectivity, on-site networking and solar power, and by specifying uptime, speed, repair and monitoring requirements.\n\nThe next step is to make sure the unit of success is the service experienced by the school — not the number of routers delivered or sites nominally connected.\n\nFinancially, that can improve procurement value and reduce repeated failed investments. Educationally, it is the difference between infrastructure that exists on a spreadsheet and infrastructure teachers and pupils can rely on.\n\nRead the research:\nhttps://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability\n\nWhat should governments measure first when assessing school connectivity: coverage, uptime, classroom use, or learning outcomes?\n\n#DigitalEducation #AfricanInfrastructure #Connectivity #Education #DevelopmentFinance"
+  "text": "Connecting a school to the internet is not the same as giving that school a dependable digital service.\n\nThat distinction sits at the centre of our latest education-infrastructure research.\n\nUNICEF's September procurement invites 96 prequalified companies to bid for long-term agreements covering connectivity, on-site networks and solar power across all 54 African countries. The potential universe is enormous: more than 860,000 schools and 260,000 health facilities.\n\nThe scale is impressive. The institutional design matters more.\n\nA school can sit inside mobile-broadband coverage and still lack affordable service, reliable electricity, working local networks, trained staff or the budget to repair equipment when something fails.\n\nThat is why counting installations can overstate progress.\n\nStoneComms proposes a Connected-School Accountability Contract built around five questions: does the service reach the right school; is the site ready to use it; is it reliable; is it actually used in teaching and administration; and can it be renewed and maintained after the first contract period?\n\nThe procurement already moves in a useful direction by combining connectivity, on-site networking and solar power, and by specifying uptime, speed, repair and monitoring requirements.\n\nThe next step is to make sure the unit of success is the service experienced by the school — not the number of routers delivered or sites nominally connected.\n\nFinancially, that can improve procurement value and reduce repeated failed investments. Educationally, it is the difference between infrastructure that exists on a spreadsheet and infrastructure teachers and pupils can rely on.\n\nRead the research:\nhttps://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability\n\nWhat should governments measure first when assessing school connectivity: coverage, uptime, classroom use, or learning outcomes?\n\n#DigitalEducation #AfricanInfrastructure #Connectivity #Education #DevelopmentFinance",
+  "processedAt": "2026-10-02T08:16:14.314Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6abf684e95c40fa79b18a1e2",
+      "dueAt": "2026-10-08T10:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }

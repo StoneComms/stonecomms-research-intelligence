@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -9,5 +9,16 @@
     "url": "https://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value?utm_source=linkedin&utm_medium=organic_social&utm_campaign=cable-is-not-cloud-africa-digital-infrastructure-local-value&utm_content=2026-10-12-main-post"
   },
   "linkedinMentions": [],
-  "text": "A submarine cable landing creates connectivity capacity. It does not, by itself, create a digital economy.\n\nOur research uses Djibouti as a useful stress test for that distinction.\n\nThe country has an exceptional geographic position and eight operational submarine cables in the World Bank Group's September 2026 diagnostic. Yet the same assessment described less than 3 MW of combined critical commercial data-centre load, relatively high wholesale IP-transit prices and expensive electricity.\n\nThat is not a contradiction. It is what happens when one layer of infrastructure advances faster than the system around it.\n\nInternational bandwidth still has to pass through landing facilities, competitive domestic fibre, internet exchange points, data centres, reliable power, cloud services, retail markets and firms capable of using digital tools productively.\n\nStoneComms calls this the Local Value Conversion Stack.\n\nThe purpose is not to rank countries. It is to identify the missing layer that prevents an existing asset from creating more local value.\n\nDjibouti's geography gives it a real regional advantage: redundancy, low-latency routes, colocation and potential cloud and disaster-recovery services. But if gateway access is restricted, electricity is costly or domestic competition is weak, more cables alone may not translate into lower prices or more local digital activity.\n\nThe wider investment lesson applies across African digital infrastructure. It is easy to count cable systems, towers or megawatts of data-centre capacity. It is harder — and more important — to measure whether those assets lower costs, improve resilience, support local firms and create productive work.\n\nRead the research:\nhttps://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value\n\nWhere do you see the biggest bottleneck between international connectivity and local economic value: power, domestic fibre, competition, hosting capacity or enterprise adoption?\n\n#DigitalInfrastructure #Africa #DataCentres #Connectivity #Investment"
+  "text": "A submarine cable landing creates connectivity capacity. It does not, by itself, create a digital economy.\n\nOur research uses Djibouti as a useful stress test for that distinction.\n\nThe country has an exceptional geographic position and eight operational submarine cables in the World Bank Group's September 2026 diagnostic. Yet the same assessment described less than 3 MW of combined critical commercial data-centre load, relatively high wholesale IP-transit prices and expensive electricity.\n\nThat is not a contradiction. It is what happens when one layer of infrastructure advances faster than the system around it.\n\nInternational bandwidth still has to pass through landing facilities, competitive domestic fibre, internet exchange points, data centres, reliable power, cloud services, retail markets and firms capable of using digital tools productively.\n\nStoneComms calls this the Local Value Conversion Stack.\n\nThe purpose is not to rank countries. It is to identify the missing layer that prevents an existing asset from creating more local value.\n\nDjibouti's geography gives it a real regional advantage: redundancy, low-latency routes, colocation and potential cloud and disaster-recovery services. But if gateway access is restricted, electricity is costly or domestic competition is weak, more cables alone may not translate into lower prices or more local digital activity.\n\nThe wider investment lesson applies across African digital infrastructure. It is easy to count cable systems, towers or megawatts of data-centre capacity. It is harder — and more important — to measure whether those assets lower costs, improve resilience, support local firms and create productive work.\n\nRead the research:\nhttps://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value\n\nWhere do you see the biggest bottleneck between international connectivity and local economic value: power, domestic fibre, competition, hosting capacity or enterprise adoption?\n\n#DigitalInfrastructure #Africa #DataCentres #Connectivity #Investment",
+  "processedAt": "2026-10-02T08:16:16.055Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6abf684f0075f78e30eaa7cc",
+      "dueAt": "2026-10-12T10:00:00.000Z",
+      "sentAt": null
+    }
+  ]
 }
