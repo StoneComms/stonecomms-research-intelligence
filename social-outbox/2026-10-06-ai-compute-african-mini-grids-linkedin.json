@@ -1,0 +1,13 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/ai-compute-african-mini-grids-flexible-demand-electricity-access",
+  "scheduledFor": "2026-10-06T11:00:00+01:00",
+  "linkAttachment": {
+    "url": "https://stonecomms.com/research/ai-compute-african-mini-grids-flexible-demand-electricity-access?utm_source=linkedin&utm_medium=organic_social&utm_campaign=ai-compute-african-mini-grids-flexible-demand-electricity-access&utm_content=2026-10-06-main-post"
+  },
+  "linkedinMentions": [],
+  "text": "Could computing demand make African mini-grids more viable without putting communities second?\n\nThat is the question behind our research on flexible digital demand and electricity access.\n\nMini-grids have a familiar economic problem. Solar generation is expensive to build but household demand can be low and concentrated outside daylight hours. A large share of available power can therefore go unused, especially early in a project's life.\n\nProductive loads help. Milling, refrigeration, irrigation and other businesses use electricity when it is available and create revenue for the system.\n\nFlexible computing introduces a new version of that idea. The Emergent Grid demonstration announced in September will test small computing loads beside renewable mini-grids in Kenya, DRC and Sierra Leone. Initial sites are projected to serve or strengthen service for roughly 85,000 people.\n\nThe technical proposition is interesting because some workloads can pause, move or scale down when local demand rises.\n\nBut that flexibility has to be real, measurable and contractually enforceable.\n\nStoneComms proposes a Community-First Compute Covenant built around five tests: surplus power, automatic subordination to community demand, transparent sharing of value, useful local infrastructure and a credible exit route.\n\nThe economics can be attractive. World Bank modelling has shown that raising a mini-grid load factor from 22% to 40% can reduce levelised electricity cost by 27%. But additional revenue does not automatically become lower tariffs, better service or more connections.\n\nThe development value therefore depends less on the label “AI” than on who gets priority, who captures the revenue and what remains locally if the computing equipment leaves.\n\nRead the research:\nhttps://stonecomms.com/research/ai-compute-african-mini-grids-flexible-demand-electricity-access\n\nWhat evidence would you want to see before treating flexible compute as a genuine electricity-access tool rather than simply a new commercial load?\n\n#EnergyAccess #MiniGrids #ArtificialIntelligence #AfricanInfrastructure #ClimateInvestment"
+}
