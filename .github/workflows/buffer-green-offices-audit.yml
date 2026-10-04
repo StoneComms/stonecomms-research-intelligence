@@ -1,0 +1,88 @@
+name: Audit Green Offices Buffer post (read only)
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Read exact LinkedIn post and check schedule
+        shell: bash
+        run: |
+          node <<'NODE'
+          const postId = '6abf684295c40fa79b1898e5'
+          const channelId = '6a8f2c7dccaf649a671fe0fe'
+          const expectedDueAt = '2026-10-04T10:00:00.000Z'
+          const articleUrl = 'https://stonecomms.com/research/green-certified-offices-africa-investment-performance'
+          const token = process.env.BUFFER_API_KEY
+          if (!token) throw new Error('BUFFER_API_KEY is not configured')
+
+          async function read(query, variables = {}) {
+            if (!query.trimStart().startsWith('query')) throw new Error('Only queries are allowed')
+            const response = await fetch('https://api.buffer.com', {
+              method: 'POST',
+              headers: {'content-type': 'application/json', authorization: `Bearer ${token}`},
+              body: JSON.stringify({query, variables}),
+              signal: AbortSignal.timeout(30000),
+            })
+            const payload = await response.json()
+            if (!response.ok || payload.errors?.length) throw new Error('Buffer read failed: HTTP ' + response.status)
+            return payload.data
+          }
+
+          const data = await read('query { account { organizations { id } } }')
+          let context
+          for (const org of data.account.organizations) {
+            const result = await read(`query GetChannels($organizationId: OrganizationId!) {
+              channels(input: {organizationId: $organizationId}) { id service isQueuePaused }
+            }`, {organizationId: org.id})
+            const channel = result.channels.find(item => item.id === channelId)
+            if (channel) { context = {organizationId: org.id, channel}; break }
+          }
+          if (!context) throw new Error('Configured StoneComms LinkedIn channel not found')
+
+          let after = null
+          let post
+          const cursors = new Set()
+          do {
+            const result = await read(`query GetPosts($input: PostsInput!, $first: Int, $after: String) {
+              posts(input: $input, first: $first, after: $after) {
+                edges { node { id text dueAt sentAt status externalLink shareMode } }
+                pageInfo { endCursor hasNextPage }
+              }
+            }`, {
+              input: {organizationId: context.organizationId, filter: {channelIds: [channelId]}},
+              first: 100, after,
+            })
+            post = result.posts.edges.map(edge => edge.node).find(item => item.id === postId)
+            if (post || !result.posts.pageInfo.hasNextPage) break
+            after = result.posts.pageInfo.endCursor
+            if (!after || cursors.has(after)) throw new Error('Invalid Buffer pagination')
+            cursors.add(after)
+          } while (true)
+
+          console.log(JSON.stringify({
+            checkedAt: new Date().toISOString(), postId, channelId, expectedDueAt,
+            found: Boolean(post), status: post?.status ?? null,
+            dueAt: post?.dueAt ?? null, sentAt: post?.sentAt ?? null,
+            shareMode: post?.shareMode ?? null,
+            isQueuePaused: context.channel.isQueuePaused,
+            articleMatches: Boolean(post && (post.text?.includes(articleUrl) || post.externalLink?.startsWith(articleUrl))),
+          }, null, 2))
+          if (!post) throw new Error('MISMATCH: exact post ID not found in the configured channel')
+          const issues = []
+          if (context.channel.service !== 'linkedin') issues.push('channel service is not LinkedIn')
+          if (context.channel.isQueuePaused !== false) issues.push('channel queue is paused or pause state unknown')
+          if (post.status !== 'scheduled') issues.push('post status is not scheduled')
+          if (Date.parse(post.dueAt) !== Date.parse(expectedDueAt)) issues.push('dueAt does not match 10:00 UTC / 11:00 BST')
+          if (post.sentAt !== null) issues.push('sentAt is not null')
+          if (!(post.text?.includes(articleUrl) || post.externalLink?.startsWith(articleUrl))) issues.push('article link does not match')
+          if (issues.length) throw new Error('MISMATCH: ' + issues.join('; '))
+          console.log('PASS: exact Green Offices post is scheduled for 11:00 BST with sentAt null and queue unpaused')
+          NODE
