@@ -1,0 +1,78 @@
+name: Verify Buffer publication status (read only)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/buffer-publication-status-readonly.yml'
+
+permissions: {}
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+    steps:
+      - name: Read publication evidence without changing posts
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          const token = process.env.BUFFER_API_KEY
+          if (!token) throw new Error('BUFFER_API_KEY is not configured')
+          const cutoff = Date.parse('2026-10-01T00:00:00+01:00')
+          async function read(query, variables = {}) {
+            if (!query.trimStart().startsWith('query')) throw new Error('Read-only queries required')
+            const response = await fetch('https://api.buffer.com', {
+              method: 'POST',
+              headers: {'content-type': 'application/json', authorization: `Bearer ${token}`},
+              body: JSON.stringify({query, variables}),
+              signal: AbortSignal.timeout(30000),
+            })
+            const payload = await response.json()
+            if (!response.ok || payload.errors?.length) throw new Error(`Buffer read failed: HTTP ${response.status}`)
+            return payload.data
+          }
+          const account = await read('query { account { organizations { id } } }')
+          const targets = {business: [], personal: []}
+          for (const org of account.account.organizations) {
+            const data = await read(`query GetChannels($organizationId: OrganizationId!) {
+              channels(input: {organizationId: $organizationId}) { id name displayName service }
+            }`, {organizationId: org.id})
+            for (const channel of data.channels) {
+              if (String(channel.service).toLowerCase() !== 'linkedin') continue
+              const names = [channel.name, channel.displayName].map(value => String(value || '').trim().toLowerCase())
+              const kind = names.includes('lee breheny') ? 'personal' : names.some(name => ['stonecomms', 'stonecomms research and intelligence', 'stonecomms research & intelligence'].includes(name)) ? 'business' : null
+              if (kind) targets[kind].push({organizationId: org.id, channel})
+            }
+          }
+          for (const kind of ['business', 'personal']) {
+            if (targets[kind].length !== 1) throw new Error(`Expected exactly one ${kind} LinkedIn identity; found ${targets[kind].length}`)
+          }
+          for (const kind of ['business', 'personal']) {
+            const {organizationId, channel} = targets[kind][0]
+            const posts = []
+            let after = null
+            const seen = new Set()
+            do {
+              const data = await read(`query GetPosts($input: PostsInput!, $first: Int, $after: String) {
+                posts(input: $input, first: $first, after: $after) {
+                  edges { node { id text status dueAt sentAt externalLink shareMode } }
+                  pageInfo { endCursor hasNextPage }
+                }
+              }`, {input: {organizationId, filter: {channelIds: [channel.id]}}, first: 100, after})
+              for (const {node: post} of data.posts.edges) {
+                if (![post.sentAt, post.dueAt].some(value => Number.isFinite(Date.parse(value)) && Date.parse(value) >= cutoff)) continue
+                const researchUrls = [...new Set((String(post.text || '').match(/https:\/\/[^\s)\]}>,]+/g) || []).filter(url => url.startsWith('https://stonecomms.com/research/')))]
+                posts.push({postId: post.id, status: post.status, dueAt: post.dueAt, sentAt: post.sentAt, researchUrls, opening: String(post.text || '').slice(0, 160)})
+              }
+              if (!data.posts.pageInfo.hasNextPage) break
+              after = data.posts.pageInfo.endCursor
+              if (!after || seen.has(after)) throw new Error('Invalid Buffer pagination')
+              seen.add(after)
+            } while (true)
+            console.log(JSON.stringify({checkedAt: new Date().toISOString(), identity: kind === 'personal' ? 'Lee Breheny' : (channel.displayName || channel.name), kind, posts}, null, 2))
+          }
+          NODE
