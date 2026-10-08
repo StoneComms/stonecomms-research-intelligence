@@ -146,12 +146,17 @@ for (const file of files) {
   }
 
   const dueAt = parseScheduledFor(file, request)
+  if (request.publishNow !== undefined && typeof request.publishNow !== 'boolean') {
+    throw new Error(`${file}: publishNow must be a boolean`)
+  }
+  // Immediate publishing is opt-in; dated requests keep their existing behaviour.
+  const publishNow = request.publishNow === true
   const input = {
     text: request.text,
     channelId,
     schedulingType: 'automatic',
-    mode: 'customScheduled',
-    dueAt,
+    mode: publishNow ? 'shareNow' : 'customScheduled',
+    ...(publishNow ? {} : {dueAt}),
     aiAssisted: true,
   }
 
@@ -169,10 +174,12 @@ for (const file of files) {
   existingPosts.push(post)
   markProcessed(filePath, request, {
     status: 'created',
+    bufferStatus: post.status || null,
+    shareMode: post.shareMode || null,
     postId: post.id,
     dueAt: post.dueAt || null,
     sentAt: post.sentAt || null,
     externalLink: post.externalLink || null,
   }, false)
-  console.log(`Queued ${file}: ${post.id} for ${post.dueAt || dueAt}`)
+  console.log(`Submitted ${file}: ${post.id} ${publishNow ? 'for immediate publication' : `for ${post.dueAt || dueAt}`}`)
 }
