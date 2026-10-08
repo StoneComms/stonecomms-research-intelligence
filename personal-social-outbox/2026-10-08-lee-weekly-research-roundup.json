@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "scheduledFor": "2026-10-08T19:44:49+01:00",
   "publishNow": true,
   "timezone": "Europe/London",
@@ -76,5 +76,16 @@
     }
   ],
   "peopleReferenced": [],
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-10-08T18:45:30.254Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "sent",
+    "shareMode": "shareNow",
+    "postId": "6ac7e4c85b76911adddd11ca",
+    "dueAt": "2026-10-08T18:45:28.105Z",
+    "sentAt": "2026-10-08T18:45:29.249Z",
+    "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7514033239703863296"
+  }
 }
