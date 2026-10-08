@@ -1,0 +1,80 @@
+{
+  "status": "ready",
+  "scheduledFor": "2026-10-08T19:44:49+01:00",
+  "publishNow": true,
+  "timezone": "Europe/London",
+  "reportingPeriod": {
+    "start": "2026-10-01T17:02:00+01:00",
+    "end": "2026-10-08T17:02:00+01:00"
+  },
+  "timingInstruction": "Lee explicitly requested Publish now on 8 October 2026. Immediate publication overrides Friday 11:00 for this request only.",
+  "scopeNote": "Four business-page promotions qualify. Three were already covered in Lee's published 5 October roundup. This schools-led weekly follow-up links the newly covered research and briefly connects it to that earlier roundup without republishing the three summaries.",
+  "dedupeUrls": [
+    "https://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability"
+  ],
+  "text": "I've been looking at the promises hidden inside the word \"connected\".\n\nEarlier this week I shared my team's work on mini-grid computing, green-certified offices and digital grids. Today's StoneComms post brings the same question into the classroom: what does the investment actually allow people to do?\n\nOur researchers examined UNICEF's Africa-wide procurement for connectivity, local networks and solar power. Bundling them together makes sense. A school does not get much value from internet access when its power fails or its classroom network does not work.\n\nFor public buyers, the important price is the cost of a dependable service over time. A cheap installation can become an expensive mistake when repairs, replacement equipment and next year's bill have no budget.\n\nFor teachers and pupils, the test is more immediate: can they use it safely during the school day? Remote schools should not quietly lose out because they are harder to serve. Teachers need support, not just equipment.\n\nI particularly like my team's insistence on five tests: reach, readiness, reliability, use and renewal. None proves that connectivity improves learning. Together, they ask whether the conditions exist for it to help.\n\nhttps://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability\n\nThat is the thread through this week's work. Better investment decisions and fairer outcomes often depend on the same unglamorous details: who operates the service, who pays for it and who is responsible when it fails.\n\nOver the coming week, we'll also be sharing existing research on two related questions. How can domestic savings finance infrastructure without pushing unsuitable risks onto pension savers? And what turns a submarine-cable landing into value for local businesses?\n\nFollow my team at StoneComms Research & Intelligence:\nhttps://www.linkedin.com/company/stonecomms/\n\nFor organisations facing a difficult question about African infrastructure, energy or development finance, I'd welcome a conversation about independent or commissioned research.\n\n#AfricanInfrastructure #DigitalEducation #DevelopmentFinance #DigitalInclusion",
+  "publicationEvidence": {
+    "checkedAt": "2026-10-08T19:41:45.579+01:00",
+    "method": "Read-only Buffer query; unique StoneComms Research and Intelligence LinkedIn identity verified; post IDs matched to social-outbox receipts.",
+    "verificationRun": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/37826254893",
+    "qualifyingResearch": [
+      {
+        "title": "Digital Grid Modernisation in Africa",
+        "url": "https://stonecomms.com/research/digital-grid-modernisation-africa-data-automation-ai-network-capacity",
+        "postId": "6abf68067e7786730dda3f5a",
+        "status": "sent",
+        "sentAt": "2026-10-02T11:00:12.649+01:00",
+        "alreadyCoveredInPersonalRoundup": true
+      },
+      {
+        "title": "Green-Certified Offices in Africa",
+        "url": "https://stonecomms.com/research/green-certified-offices-africa-investment-performance",
+        "postId": "6abf684295c40fa79b1898e5",
+        "status": "sent",
+        "sentAt": "2026-10-04T11:01:09.185+01:00",
+        "alreadyCoveredInPersonalRoundup": true
+      },
+      {
+        "title": "AI Compute and African Mini-Grids",
+        "url": "https://stonecomms.com/research/ai-compute-african-mini-grids-flexible-demand-electricity-access",
+        "postId": "6abf684df7d5191f80b2a379",
+        "status": "sent",
+        "sentAt": "2026-10-06T11:02:02.615+01:00",
+        "alreadyCoveredInPersonalRoundup": true
+      },
+      {
+        "title": "Connecting African Schools: Procurement, Power and Service Accountability for Digital Education",
+        "url": "https://stonecomms.com/research/connecting-african-schools-procurement-power-service-accountability",
+        "postId": "6abf684e95c40fa79b18a1e2",
+        "status": "sent",
+        "sentAt": "2026-10-08T11:03:38.115+01:00",
+        "alreadyCoveredInPersonalRoundup": false
+      }
+    ]
+  },
+  "duplicateCheck": {
+    "previousPersonalRequest": "personal-social-outbox/2026-10-05-lee-weekly-research-roundup.json",
+    "previousPostId": "6ac1fc2caa79e514b910bee8",
+    "previousStatus": "sent",
+    "previousSentAt": "2026-10-05T11:00:52.927+01:00",
+    "result": "No existing personal request for this reporting period. The new schools research URL is not covered by the previous roundup. Previous three summaries and links are not repeated. Publisher performs its live Buffer duplicate check before submission."
+  },
+  "upcomingPreviews": [
+    {
+      "topic": "Local-currency infrastructure finance",
+      "url": "https://stonecomms.com/research/currency-before-concrete-africa-local-currency-infrastructure-finance",
+      "promotionStatus": "scheduled",
+      "scheduledFor": "2026-10-10T11:00:00+01:00",
+      "note": "Upcoming promotion of existing research, not a claim of new research publication."
+    },
+    {
+      "topic": "The Cable Is Not the Cloud",
+      "url": "https://stonecomms.com/research/cable-is-not-cloud-africa-digital-infrastructure-local-value",
+      "promotionStatus": "scheduled",
+      "scheduledFor": "2026-10-12T11:00:00+01:00",
+      "note": "Upcoming promotion of existing research, not a claim of new research publication."
+    }
+  ],
+  "peopleReferenced": [],
+  "linkedinMentions": []
+}
