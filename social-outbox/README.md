@@ -136,3 +136,18 @@ After successful creation, or after an existing matching Buffer post is found, t
 - `results` containing the Buffer post ID and scheduling/sent timestamps where available
 
 The workflow commits these state changes back to the repository with a CI-skipping commit. If publication succeeds but that state commit fails, the next run checks Buffer before creating anything and suppresses a matching duplicate using exact post text and normalized article/dedupe URLs.
+
+
+## StoneComms company LinkedIn hero image requirement (20 October 2026)
+
+For all NEW StoneComms research-promotion posts on the official LinkedIn company page, attaching the exact published report's approved hero illustration is MANDATORY. This instruction supersedes the earlier statement that LinkedIn media is optional for research posts. Do not rely on LinkedIn automatically generating a thumbnail from link/Open Graph metadata: it has resulted in posts without the intended report image.
+
+Before creating a new social-outbox request:
+1. Retrieve the specific article's approved final hero image from the live Webflow Research CMS item or the permanent company-owned GitHub media asset bridge. Positively match it to the report (not a generic illustration or logo).
+2. Confirm the image URL is stable, publicly readable HTTPS and that the file actually returns an image. Never use ChatGPT session, expiring, signed, private or staging image URLs.
+3. Set a non-empty media array, using { "type": "image", "url": "https://...permanent-image...", "alt": "Accurate visual description" }.
+4. Since Buffer cannot combine LinkedIn media and linkAttachment, OMIT linkAttachment entirely and put the canonical article URL with proper LinkedIn UTM tracking visibly in the post text. Keep articleUrl clean and canonical for deduplication.
+5. Before writing to GitHub, check that image URL, alt text, report URL and linked report all match. If the approved image is missing, inaccessible or uncertain, STOP that individual post, report a clearly labelled IMAGE BLOCKER and do not publish it as text-only or invent artwork. Continue with other valid posts only if sequence and 48-hour spacing remain safe.
+6. Do not retrofit processed requests or duplicate any existing Buffer post. Reconcile live LinkedIn state, Buffer state, ready/processed company outbox and personal-social-outbox before catching up. A processed receipt confirms Buffer acceptance, NOT necessarily that LinkedIn published on its dueAt. Verify actual published state when claiming publication.
+
+Personal weekly LinkedIn roundups remain separate under personal-social-outbox/; do not alter their identity, schedule or deduplication rules. The above image rule applies to company research-promotion posts, not necessarily to the editorial personal roundup.
