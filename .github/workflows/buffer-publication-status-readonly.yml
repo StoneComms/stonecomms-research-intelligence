@@ -59,14 +59,14 @@ jobs:
             do {
               const data = await read(`query GetPosts($input: PostsInput!, $first: Int, $after: String) {
                 posts(input: $input, first: $first, after: $after) {
-                  edges { node { id text status dueAt sentAt externalLink shareMode } }
+                  edges { node { id text status dueAt sentAt externalLink shareMode assets { id mimeType } } }
                   pageInfo { endCursor hasNextPage }
                 }
               }`, {input: {organizationId, filter: {channelIds: [channel.id]}}, first: 100, after})
               for (const {node: post} of data.posts.edges) {
                 if (![post.sentAt, post.dueAt].some(value => Number.isFinite(Date.parse(value)) && Date.parse(value) >= cutoff)) continue
                 const researchUrls = [...new Set((String(post.text || '').match(/https:\/\/[^\s)\]}>,]+/g) || []).filter(url => url.startsWith('https://stonecomms.com/research/')))]
-                posts.push({postId: post.id, status: post.status, externalLink: post.externalLink, dueAt: post.dueAt, sentAt: post.sentAt, researchUrls, opening: String(post.text || '').slice(0, 160)})
+                posts.push({postId: post.id, status: post.status, externalLink: post.externalLink, dueAt: post.dueAt, sentAt: post.sentAt, researchUrls, text: post.text, assets: post.assets})
               }
               if (!data.posts.pageInfo.hasNextPage) break
               after = data.posts.pageInfo.endCursor
