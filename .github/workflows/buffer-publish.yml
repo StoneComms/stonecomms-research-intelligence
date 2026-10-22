@@ -5,6 +5,15 @@ on:
     branches: [main]
     paths:
       - 'social-outbox/*.json'
+      - 'scripts/prepare-social-handoff.mjs'
+      - 'scripts/social-safety.mjs'
+      - 'scripts/publish-buffer-outbox.mjs'
+      - '.github/workflows/buffer-publish.yml'
+  schedule:
+    - cron: '15 8 * * *'
+  workflow_run:
+    workflows: ['Publish Webflow Research Text']
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -16,7 +25,9 @@ concurrency:
 
 jobs:
   publish:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     env:
       BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
       SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
@@ -25,6 +36,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
+
+      - name: Verify social safety checks
+        run: node --test tests/*.test.mjs
+
+      - name: Prepare missing company research promotions
+        run: node scripts/prepare-social-handoff.mjs company
 
       - name: Publish new outbox requests
         run: node scripts/publish-buffer-outbox.mjs
@@ -33,7 +51,7 @@ jobs:
         if: always()
         shell: bash
         run: |
-          if git diff --quiet -- social-outbox; then
+          if [ -z "$(git status --porcelain -- social-outbox)" ]; then
             echo "No outbox state changes to persist"
             exit 0
           fi
@@ -52,3 +70,12 @@ jobs:
           done
           echo "::error::Could not persist processed Buffer outbox state after 5 attempts"
           exit 1
+
+      - name: Save handoff report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: company-social-handoff-${{ github.run_id }}
+          path: social-company-handoff-result.json
+          if-no-files-found: warn
+          retention-days: 30

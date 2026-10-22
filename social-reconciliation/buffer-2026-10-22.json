@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-22T20:39:48.342Z",
+  "verificationRun": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/39850777148",
+  "companyPosts": [
+    {
+      "postId": "6ad029394bb66967767e31c5",
+      "status": "sent",
+      "sentAt": "2026-10-14T12:56:28.676Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7516119736947159040",
+      "assets": []
+    },
+    {
+      "postId": "6abf6850a77366b00cc79eeb",
+      "status": "sent",
+      "sentAt": "2026-10-14T10:02:26.673Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7516075939705831424",
+      "assets": []
+    },
+    {
+      "postId": "6abf684fd4210a2275d04e37",
+      "status": "sent",
+      "sentAt": "2026-10-10T10:01:38.503Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7514626187860570112",
+      "assets": []
+    },
+    {
+      "postId": "6abf684f0075f78e30eaa7cc",
+      "status": "sent",
+      "sentAt": "2026-10-12T10:02:46.378Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7515351245507850241",
+      "assets": []
+    },
+    {
+      "postId": "6abf684e95c40fa79b18a1e2",
+      "status": "sent",
+      "sentAt": "2026-10-08T10:03:38.115Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7513901911637450755",
+      "assets": []
+    },
+    {
+      "postId": "6abf684df7d5191f80b2a379",
+      "status": "sent",
+      "sentAt": "2026-10-06T10:02:02.615Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7513176735119732736",
+      "assets": []
+    },
+    {
+      "postId": "6abf684295c40fa79b1898e5",
+      "status": "sent",
+      "sentAt": "2026-10-04T10:01:09.185Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7512451737019002881",
+      "assets": []
+    },
+    {
+      "postId": "6abf68067e7786730dda3f5a",
+      "status": "sent",
+      "sentAt": "2026-10-02T10:00:12.649Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7511726722602676224",
+      "assets": []
+    }
+  ],
+  "findings": [
+    "Company research posts dated 10, 12 and 14 October were sent and have LinkedIn publication URLs.",
+    "No queued company or personal posts were returned by the live query.",
+    "Historical company posts returned no attached assets; they are not recreated or retrofitted.",
+    "Personal 11 October post is recruitment; 12 October post covers water utilities and is excluded from the roundup."
+  ],
+  "preserveHistoricalOutboxes": true
+}

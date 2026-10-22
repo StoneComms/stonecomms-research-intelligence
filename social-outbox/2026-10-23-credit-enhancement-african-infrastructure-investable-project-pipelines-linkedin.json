@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines",
+  "scheduledFor": "2026-10-23T10:00:00.000Z",
+  "text": "Credit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines\n\nAfrica does not lack announcements about private capital. It lacks enough projects whose risks are allocated, priced, monitored and disclosed well enough for private capital to stay. A new €500 million financing for Benin, South Africa's planned infrastructure credit-guarantee vehicle, Nigeria's InfraCredit model and a multi-country renewable-energy guarantee framework show four different ways public institutions can strengthen a transaction. StoneComms examines when guarantees create additional investment - and when they simply replace visible public borrowing with less visible contingent risk.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines?utm_source=linkedin&utm_medium=organic_social&utm_campaign=credit-enhancement-african-infrastructure-investable-project-pipelines&utm_content=2026-10-23-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ac41d577665c44bdc37f3a6_stonecomms-credit-enhancement-african-infrastructure-investable-project-pipelines-hero.png",
+      "alt": "African finance, government and infrastructure professionals review project plans around a boardroom table overlooking power, water and transport assets."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ac41d577665c44bdc37f3a6_stonecomms-credit-enhancement-african-infrastructure-investable-project-pipelines-hero.png",
+    "alt": "African finance, government and infrastructure professionals review project plans around a boardroom table overlooking power, water and transport assets.",
+    "sha256": "b30f6bc14afa5217039d4cd70442fbccc8b6195ffe19ece1efc33a9b385e8229",
+    "contentType": "image/png",
+    "bytes": 1746854,
+    "checkedAt": "2026-10-22T20:44:41.230Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/credit-enhancement-african-infrastructure-investable-project-pipelines.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

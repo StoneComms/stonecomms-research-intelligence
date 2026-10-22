@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power",
+  "scheduledFor": "2026-10-27T11:00:00.000Z",
+  "text": "Battery Energy Storage in Africa: Procuring Flexibility and Financing Reliable Power\n\nAfrica's battery-storage opportunity is becoming more concrete, but installed capacity is an incomplete measure of progress. South Africa's October procurement announcement prioritises storage services; Egypt's Obelisk solar-and-storage complex reached full commercial operation in August; Senegal's Walo project provides a distinct grid-support model. StoneComms examines the institutional machinery that converts stored electricity into reliable service: a defined system need, a suitable location, enforceable dispatch rights, durable payments and funded lifetime performance.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power?utm_source=linkedin&utm_medium=organic_social&utm_campaign=battery-energy-storage-africa-procuring-flexibility-reliable-power&utm_content=2026-10-27-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6acca1d233e846e23ba07d51_ChatGPT%20Image%20Oct%2012%2C%202026%2C%2010_00_53%20AM.png",
+      "alt": "An African engineer and technician review a plan beside battery-storage enclosures, a transformer and a solar field with a town beyond."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6acca1d233e846e23ba07d51_ChatGPT%20Image%20Oct%2012%2C%202026%2C%2010_00_53%20AM.png",
+    "alt": "An African engineer and technician review a plan beside battery-storage enclosures, a transformer and a solar field with a town beyond.",
+    "sha256": "76cc474dce9fa420baaa39fc43a12f7bbd084021c60901cbfda3ce3b6955a4fe",
+    "contentType": "image/png",
+    "bytes": 2457554,
+    "checkedAt": "2026-10-22T20:44:41.247Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/battery-energy-storage-africa-procuring-flexibility-reliable-power.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

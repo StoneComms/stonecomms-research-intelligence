@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability",
+  "scheduledFor": "2026-10-25T11:00:00.000Z",
+  "text": "Urban Water Utilities in Africa: Reducing Non-Revenue Water to Finance Reliable Service\n\nAfrica's urban water challenge is often described as a shortage of dams, treatment works and capital. Those constraints are real. But water already produced is also disappearing through leaking pipes, inaccurate meters, illegal connections and weak billing before it can sustain either households or utilities. Kenya's regulator reports that non-revenue water rose to 48 per cent in 2024/25; a 2026 World Bank programme found losses above 45 per cent among all 18 participating Southern African utilities. This paper asks when loss reduction becomes more than a technical repair programme: when can it become the operating platform for reliable service, fairer access and credible long-term finance?\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability?utm_source=linkedin&utm_medium=organic_social&utm_campaign=urban-water-utilities-africa-non-revenue-water-financial-sustainability&utm_content=2026-10-25-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ac7f0c6d93cac08fdd1fb53_ChatGPT%20Image%20Oct%208%2C%202026%2C%2008_36_17%20PM.png",
+      "alt": "Two African water-utility technicians and a resident inspect a pressure gauge on a repaired pipe in an urban neighbourhood."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ac7f0c6d93cac08fdd1fb53_ChatGPT%20Image%20Oct%208%2C%202026%2C%2008_36_17%20PM.png",
+    "alt": "Two African water-utility technicians and a resident inspect a pressure gauge on a repaired pipe in an urban neighbourhood.",
+    "sha256": "70a9077d12b6d4bc0a0fbc03b039c3e656e1081c10b59ac9167320762cba525f",
+    "contentType": "image/png",
+    "bytes": 3439041,
+    "checkedAt": "2026-10-22T20:44:41.242Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/urban-water-utilities-africa-non-revenue-water-financial-sustainability.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

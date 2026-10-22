@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service",
+  "scheduledFor": "2026-10-29T11:00:00.000Z",
+  "text": "Electric Buses in Africa: Financing Reliable Urban Passenger Service\n\nElectric buses are becoming a credible part of African urban transport, but financing a fleet is not the same as financing a dependable journey. New evidence from East Africa, Cape Town's procurement programme and Dakar's operating experience points to a practical question: who coordinates the vehicles, electricity, routes, maintenance and payments on which passenger service depends? This paper tests three delivery models and proposes a Service Conversion Test for institutions preparing their next investment.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service?utm_source=linkedin&utm_medium=organic_social&utm_campaign=electric-buses-africa-financing-reliable-urban-passenger-service&utm_content=2026-10-29-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad0da10f3488ae9d086afbe_ChatGPT%20Image%20Oct%2015%2C%202026%2C%2002_49_52%20PM.png",
+      "alt": "An African bus driver and operations coordinator review a timetable beside an electric bus while commuters board at a shaded city interchange."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad0da10f3488ae9d086afbe_ChatGPT%20Image%20Oct%2015%2C%202026%2C%2002_49_52%20PM.png",
+    "alt": "An African bus driver and operations coordinator review a timetable beside an electric bus while commuters board at a shaded city interchange.",
+    "sha256": "42b078b8ca477b26bf828872d1310917ec158bc014e1538b0146cd4182bf7142",
+    "contentType": "image/png",
+    "bytes": 2558536,
+    "checkedAt": "2026-10-22T20:44:41.254Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/electric-buses-africa-financing-reliable-urban-passenger-service.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

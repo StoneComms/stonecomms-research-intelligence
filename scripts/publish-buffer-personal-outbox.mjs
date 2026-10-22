@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import {matches} from './social-safety.mjs'
 
 const endpoint = 'https://api.buffer.com'
 const token = process.env.BUFFER_API_KEY
@@ -91,6 +92,8 @@ async function fetchPosts(organizationId, channelId) {
 }
 
 function findDuplicate(request, posts) {
+  const match = posts.find(post => matches(request, post))
+  if (match) return match
   const normalizedText = String(request.text || '').trim()
   const keys = dedupeKeys(request)
   for (const post of posts) {
@@ -151,6 +154,7 @@ for (const file of files) {
   }
   // Immediate publishing is opt-in; dated requests keep their existing behaviour.
   const publishNow = request.publishNow === true
+  if (!publishNow && Date.parse(dueAt) <= Date.now()) throw new Error(`${file}: refusing past-dated personal request`)
   const input = {
     text: request.text,
     channelId,

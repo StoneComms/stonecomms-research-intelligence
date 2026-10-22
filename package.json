@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test tests/publish-webflow-research.test.mjs"
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",

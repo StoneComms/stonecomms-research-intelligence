@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+  "scheduledFor": "2026-11-02T11:00:00.000Z",
+  "text": "Practical AI Adoption in Sub-Saharan Africa: Procurement, Local Adaptation and the Productivity Opportunity\n\nArtificial intelligence is reaching African workers, firms and public institutions before the foundations for dependable use are evenly in place. The immediate opportunity is not to reproduce a frontier-model race. It is to procure and adapt task-specific tools that work with local languages, trusted data, affordable access and accountable institutions. This paper examines how Sub-Saharan African governments and investors can turn early adoption into productivity while keeping implementation risk visible.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity?utm_source=linkedin&utm_medium=organic_social&utm_campaign=practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity&utm_content=2026-11-02-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad9bd013f201e4b770696f5_practical-ai-adoption-sub-saharan-africa-hero.png",
+      "alt": "An African public-service officer, local software developer and frontline health worker review forms beside a laptop in a connected service centre."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad9bd013f201e4b770696f5_practical-ai-adoption-sub-saharan-africa-hero.png",
+    "alt": "An African public-service officer, local software developer and frontline health worker review forms beside a laptop in a connected service centre.",
+    "sha256": "43441f4c55d6c9cfd2f60ac8c1c44eea3fdf3d881cb19825451808f82b6e1b38",
+    "contentType": "image/png",
+    "bytes": 4167829,
+    "checkedAt": "2026-10-22T20:44:41.271Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

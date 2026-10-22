@@ -1,0 +1,28 @@
+{
+  "status": "ready",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+  "scheduledFor": "2026-10-31T11:00:00.000Z",
+  "text": "Solar Irrigation in Africa: Financing Farm Returns Within Water Limits\n\nSolar irrigation can make water cheaper to lift without making it more abundant, or crops more valuable. Recent African programmes are shifting attention from equipment access to the institutions around it. This paper examines how public and private capital can finance durable farm returns while respecting water limits, and why pump sales, loan repayment and sustainable agricultural development must be measured separately.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits?utm_source=linkedin&utm_medium=organic_social&utm_campaign=solar-irrigation-africa-financing-farm-returns-water-limits&utm_content=2026-10-31-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad8704832ce08132fe9fbf7_stonecomms-solar-irrigation-africa-financing-farm-returns-water-limits-hero.png",
+      "alt": "An African farmer and agronomist discuss a vegetable plot while a technician checks a pump beside solar panels and a water tank."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ad8704832ce08132fe9fbf7_stonecomms-solar-irrigation-africa-financing-farm-returns-water-limits-hero.png",
+    "alt": "An African farmer and agronomist discuss a vegetable plot while a technician checks a pump beside solar panels and a water tank.",
+    "sha256": "fc40a3a1673df5d48d3ff0211c2524fb9a03d61554f2ce65e656ca2293e98fd5",
+    "contentType": "image/png",
+    "bytes": 4044435,
+    "checkedAt": "2026-10-22T20:44:41.264Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/solar-irrigation-africa-financing-farm-returns-water-limits.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+}

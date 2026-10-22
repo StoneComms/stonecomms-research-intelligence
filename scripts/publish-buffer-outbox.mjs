@@ -1,6 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import {uploadImageToSanity} from './media-bridge.mjs'
+import {validateCompanyHero, matches} from './social-safety.mjs'
 
 const endpoint = 'https://api.buffer.com'
 const token = process.env.BUFFER_API_KEY
@@ -102,6 +103,8 @@ async function fetchChannelPosts(organizationId, channelId) {
 }
 
 function findDuplicate(request, posts) {
+  const match = posts.find(post => matches(request, post))
+  if (match) return match
   const keys = dedupeKeys(request)
   const normalizedText = String(request.text || '').trim()
   for (const post of posts) {
@@ -124,7 +127,7 @@ function parseScheduledFor(file, request) {
 function enforceLinkedInSpacing(file, scheduled, posts) {
   if (!scheduled) return
   for (const post of posts) {
-    const adjacent = post.dueAt || post.sentAt
+    const adjacent = post.status === 'sent' ? (post.sentAt || post.dueAt) : post.dueAt
     if (!adjacent) continue
     const timestamp = Date.parse(adjacent)
     if (!Number.isFinite(timestamp)) continue
@@ -217,6 +220,7 @@ for (const file of files) {
   const request = JSON.parse(fs.readFileSync(filePath, 'utf8'))
   if (request.status !== 'ready') continue
 
+  try {
   const channels = request.channels
   if (!request.text || !Array.isArray(channels) || channels.length === 0) throw new Error(`${file}: text and channels are required`)
   if (request.articleUrl && !normalizeUrl(request.articleUrl)) throw new Error(`${file}: articleUrl must be a valid URL`)
@@ -238,12 +242,15 @@ for (const file of files) {
     const duplicate = findDuplicate(request, existingPosts)
     if (duplicate) {
       console.log(`Duplicate suppressed for ${file} on ${name}: ${duplicate.id}`)
-      results.push({channel: name, status: 'duplicate', postId: duplicate.id, dueAt: duplicate.dueAt || null, sentAt: duplicate.sentAt || null})
+      results.push({channel: name, status: 'duplicate', postId: duplicate.id, dueAt: duplicate.dueAt || null, sentAt: duplicate.sentAt || null, bufferStatus: duplicate.status || null, externalLink: duplicate.externalLink || null})
       continue
     }
 
     allDuplicate = false
-    if (name === 'linkedin') enforceLinkedInSpacing(file, scheduled, existingPosts)
+    if (name === 'linkedin') {
+      await validateCompanyHero(request)
+      enforceLinkedInSpacing(file, scheduled, existingPosts)
+    }
 
     const metadata = buildMetadata(file, request, name, assets)
     const mode = scheduled ? 'customScheduled' : (request.mode || 'addToQueue')
@@ -262,7 +269,7 @@ for (const file of files) {
 
     const data = await gql(`mutation CreatePost($input: CreatePostInput!) {
       createPost(input: $input) {
-        ... on PostActionSuccess { post { id text dueAt sentAt status shareMode assets { id mimeType } } }
+        ... on PostActionSuccess { post { id text dueAt sentAt status externalLink shareMode assets { id mimeType } } }
         ... on MutationError { message }
       }
     }`, {input})
@@ -271,9 +278,13 @@ for (const file of files) {
     if (!post?.id) throw new Error(`${file}: Buffer did not return a post id`)
 
     existingPosts.push(post)
-    results.push({channel: name, status: 'created', postId: post.id, dueAt: post.dueAt || null, sentAt: post.sentAt || null})
+    results.push({channel: name, status: 'created', postId: post.id, dueAt: post.dueAt || null, sentAt: post.sentAt || null, bufferStatus: post.status || null, externalLink: post.externalLink || null, assetCount: post.assets?.length || 0})
     console.log(`Queued ${file} on ${name}: ${post.id}${post.dueAt ? ` for ${post.dueAt}` : ''}`)
   }
 
   markProcessed(filePath, request, results, allDuplicate)
+  } catch (error) {
+    console.error(`Blocked ${file}: ${error.message}`)
+    process.exitCode = 1
+  }
 }
