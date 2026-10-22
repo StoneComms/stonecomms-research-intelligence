@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "scheduledFor": "2026-10-23T10:00:00.000Z",
   "timezone": "Europe/London",
   "dedupeUrls": [
@@ -14,5 +14,16 @@
       "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7516075939705831424"
     }
   ],
-  "scopeNote": "Only company research with verified sent timestamps and LinkedIn URLs; unrounded backlog carried forward; excludes prior roundup URLs and reconciled manual personal coverage."
+  "scopeNote": "Only company research with verified sent timestamps and LinkedIn URLs; unrounded backlog carried forward; excludes prior roundup URLs and reconciled manual personal coverage.",
+  "processedAt": "2026-10-22T20:46:23.061Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "scheduled",
+    "shareMode": "customScheduled",
+    "postId": "6ada761e793513d242f300bb",
+    "dueAt": "2026-10-23T10:00:00.000Z",
+    "sentAt": null,
+    "externalLink": null
+  }
 }
