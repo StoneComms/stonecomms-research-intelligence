@@ -65,5 +65,63 @@
     "Historical company posts returned no attached assets; they are not recreated or retrofitted.",
     "Personal 11 October post is recruitment; 12 October post covers water utilities and is excluded from the roundup."
   ],
-  "preserveHistoricalOutboxes": true
+  "preserveHistoricalOutboxes": true,
+  "restoration": {
+    "verifiedAt": "2026-10-22T20:47:51.271Z",
+    "readOnlyVerificationRun": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/39851907522",
+    "repairCommit": "63ffb4f101f24bb893283a61ca0f60f1c5106612",
+    "company": [
+      {
+        "postId": "6ada7624793513d242f301c4",
+        "status": "scheduled",
+        "dueAt": "2026-10-31T11:00:00.000Z",
+        "assetCount": 1,
+        "title": "Solar Irrigation in Africa: Financing Farm Returns Within Water Limits"
+      },
+      {
+        "postId": "6ada76240cf9e349484a1b99",
+        "status": "scheduled",
+        "dueAt": "2026-11-02T11:00:00.000Z",
+        "assetCount": 1,
+        "title": "Practical AI Adoption in Sub-Saharan Africa: Procurement, Local Adaptation and the Productivity Opportunity"
+      },
+      {
+        "postId": "6ada762371bf6df473a9154f",
+        "status": "scheduled",
+        "dueAt": "2026-10-29T11:00:00.000Z",
+        "assetCount": 1,
+        "title": "Electric Buses in Africa: Financing Reliable Urban Passenger Service"
+      },
+      {
+        "postId": "6ada76230cf9e349484a1a54",
+        "status": "scheduled",
+        "dueAt": "2026-10-27T11:00:00.000Z",
+        "assetCount": 1,
+        "title": "Battery Energy Storage in Africa: Procuring Flexibility and Financing Reliable Power"
+      },
+      {
+        "postId": "6ada76230cf9e349484a19e0",
+        "status": "scheduled",
+        "dueAt": "2026-10-25T11:00:00.000Z",
+        "assetCount": 1,
+        "title": "Urban Water Utilities in Africa: Reducing Non-Revenue Water to Finance Reliable Service"
+      },
+      {
+        "postId": "6ada76221ef43d2639863d45",
+        "status": "scheduled",
+        "dueAt": "2026-10-23T10:00:00.000Z",
+        "assetCount": 1,
+        "title": "Credit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines"
+      }
+    ],
+    "personal": [
+      {
+        "postId": "6ada761e793513d242f300bb",
+        "status": "scheduled",
+        "dueAt": "2026-10-23T10:00:00.000Z"
+      }
+    ],
+    "publicationPending": true,
+    "assetOrAccessBlockers": []
+  }
 }
