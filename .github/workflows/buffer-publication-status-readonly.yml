@@ -22,7 +22,8 @@ jobs:
           node --input-type=module <<'NODE'
           const token = process.env.BUFFER_API_KEY
           if (!token) throw new Error('BUFFER_API_KEY is not configured')
-          // Includes the restored queue and its attachment evidence.\n          const cutoff = Date.parse('2026-10-01T00:00:00+01:00')
+          // Includes the restored queue and its attachment evidence.
+          const cutoff = Date.parse('2026-10-01T00:00:00+01:00')
           async function read(query, variables = {}) {
             if (!query.trimStart().startsWith('query')) throw new Error('Read-only queries required')
             const response = await fetch('https://api.buffer.com', {
