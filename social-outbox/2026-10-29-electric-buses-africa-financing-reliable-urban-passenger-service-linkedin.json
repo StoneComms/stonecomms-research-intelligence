@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -24,5 +24,19 @@
     "source": "Exact image and alt text on the live production research article"
   },
   "sourceManifest": "webflow-publications/electric-buses-africa-financing-reliable-urban-passenger-service.json",
-  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-10-22T20:46:28.112Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6ada762371bf6df473a9154f",
+      "dueAt": "2026-10-29T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "channels": [
     "linkedin"
   ],
@@ -24,5 +24,19 @@
     "source": "Exact image and alt text on the live production research article"
   },
   "sourceManifest": "webflow-publications/solar-irrigation-africa-financing-farm-returns-water-limits.json",
-  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026"
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-10-22T20:46:28.590Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6ada7624793513d242f301c4",
+      "dueAt": "2026-10-31T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
 }
