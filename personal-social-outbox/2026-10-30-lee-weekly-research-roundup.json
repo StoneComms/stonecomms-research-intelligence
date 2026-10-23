@@ -1,0 +1,29 @@
+{
+  "status": "processed",
+  "scheduledFor": "2026-10-30T11:00:00.000Z",
+  "timezone": "Europe/London",
+  "dedupeUrls": [
+    "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines"
+  ],
+  "text": "A research catch-up from my team at StoneComms.\n\nCredit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines\nAfrica does not lack announcements about private capital. It lacks enough projects whose risks are allocated, priced, monitored and disclosed well enough for private capital to stay. A new €500 million financing for Benin, South Africa's planned infrastructure credit-guarantee vehicle, Nigeria's InfraCredit model and a multi-country renewable-energy guarantee framework show four different ways public institutions can strengthen a transaction. StoneComms examines when guarantees create additional investment - and when they simply replace visible public borrowing with less visible contingent risk.\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines?utm_source=linkedin&utm_medium=organic_social&utm_campaign=credit-enhancement-african-infrastructure-investable-project-pipelines&utm_content=2026-10-30-personal-roundup\n\nThe full papers are freely available. If your organisation needs research on a specific African infrastructure, energy or investment question, I would welcome a conversation.\n\n#AfricanInfrastructure #DevelopmentFinance",
+  "publicationEvidence": [
+    {
+      "articleUrl": "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines",
+      "postId": "6ada76221ef43d2639863d45",
+      "sentAt": "2026-10-23T06:54:44.109Z",
+      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7519290192407666688"
+    }
+  ],
+  "scopeNote": "Only company research with verified sent timestamps and LinkedIn URLs; unrounded backlog carried forward; excludes prior roundup URLs and reconciled manual personal coverage.",
+  "processedAt": "2026-10-23T13:45:19.955Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "scheduled",
+    "shareMode": "customScheduled",
+    "postId": "6adb64ef6bf37011a3795159",
+    "dueAt": "2026-10-30T11:00:00.000Z",
+    "sentAt": null,
+    "externalLink": null
+  }
+}
