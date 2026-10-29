@@ -132,6 +132,65 @@ const files = fs.readdirSync(dir).filter(file => file.endsWith('.json')).sort()
 for (const file of files) {
   const filePath = path.join(dir, file)
   const request = JSON.parse(fs.readFileSync(filePath, 'utf8'))
+
+  // Revision of an existing scheduled Lee post. Never creates a second post.
+  if (request.status === 'revise-scheduled') {
+    const revision = request.revision
+    const postId = revision?.targetPostId
+    if (!postId || postId !== request.result?.postId || request.duplicate !== false) {
+      throw new Error(`${file}: scheduled revision target does not match the original Buffer receipt`)
+    }
+    if (typeof revision.expectedPreviousText !== 'string' || !request.text ||
+        !Array.isArray(request.dedupeUrls) || request.dedupeUrls.length < 1 ||
+        !request.dedupeUrls.every(url => request.text.includes(url))) {
+      throw new Error(`${file}: revision content or expected previous text is incomplete`)
+    }
+    const target = existingPosts.find(post => post.id === postId)
+    if (!target) throw new Error(`${file}: scheduled post not found in Lee's verified Buffer channel`)
+    const scheduledFor = parseScheduledFor(file, request)
+    const scheduleUnchanged = target.status === 'scheduled' &&
+      target.sentAt === null && Date.parse(target.dueAt) === Date.parse(scheduledFor)
+    if (!scheduleUnchanged) throw new Error(`${file}: scheduled target is not safely editable`)
+    if (target.text !== request.text && target.text !== revision.expectedPreviousText) {
+      throw new Error(`${file}: Buffer text was changed independently; revision stopped`)
+    }
+
+    let revised = target
+    if (target.text !== request.text) {
+      // Edit only text. Omitting dueAt/mode preserves the exact Friday schedule.
+      const data = await gql(`mutation EditPost($input: EditPostInput!) {
+        editPost(input: $input) {
+          ... on PostActionSuccess { post { id text dueAt sentAt status externalLink shareMode } }
+          ... on MutationError { message }
+        }
+      }`, {input: {id: postId, text: request.text, aiAssisted: true}})
+      if (data.editPost?.message) throw new Error(`${file}: Buffer edit rejected: ${data.editPost.message}`)
+      revised = data.editPost?.post
+      if (!revised?.id || revised.id !== postId || revised.text !== request.text ||
+          revised.status !== 'scheduled' || revised.sentAt !== null ||
+          Date.parse(revised.dueAt) !== Date.parse(scheduledFor)) {
+        throw new Error(`${file}: edit response did not confirm preserved schedule and exact text`)
+      }
+    }
+
+    // Read back after the edit; a success reply alone is not publication evidence.
+    const confirmed = (await fetchPosts(organizationId, channelId)).find(post => post.id === postId)
+    if (!confirmed || confirmed.text !== request.text || confirmed.status !== 'scheduled' ||
+        confirmed.sentAt !== null || Date.parse(confirmed.dueAt) !== Date.parse(scheduledFor)) {
+      throw new Error(`${file}: Buffer readback failed to confirm revised text and schedule`)
+    }
+    fs.writeFileSync(filePath, JSON.stringify({
+      ...request, status: 'processed', editedAt: new Date().toISOString(),
+      revision: {...revision, status: 'verified'},
+      editResult: {
+        status: 'updated', postId, dueAt: confirmed.dueAt,
+        bufferStatus: confirmed.status, textVerified: true, duplicateCreated: false
+      }
+    }, null, 2) + '\\n')
+    console.log(`Revised existing Lee Buffer post for ${file}; schedule preserved: ${confirmed.dueAt}`)
+    continue
+  }
+
   if (request.status !== 'ready') continue
   if (!request.text || typeof request.text !== 'string') throw new Error(`${file}: text is required`)
 
