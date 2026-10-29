@@ -77,3 +77,4 @@ jobs:
             console.log(JSON.stringify({checkedAt: new Date().toISOString(), identity: kind === 'personal' ? 'Lee Breheny' : (channel.displayName || channel.name), kind, posts}, null, 2))
           }
           NODE
+# Audit refresh: 2026-10-29 weekly personal-roundup evidence check (no publication)
