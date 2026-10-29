@@ -1,20 +1,45 @@
 {
-  "status": "processed",
+  "status": "revise-scheduled",
   "scheduledFor": "2026-10-30T11:00:00.000Z",
   "timezone": "Europe/London",
   "dedupeUrls": [
-    "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines"
+    "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines",
+    "https://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability",
+    "https://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power",
+    "https://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service"
   ],
-  "text": "A research catch-up from my team at StoneComms.\n\nCredit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines\nAfrica does not lack announcements about private capital. It lacks enough projects whose risks are allocated, priced, monitored and disclosed well enough for private capital to stay. A new €500 million financing for Benin, South Africa's planned infrastructure credit-guarantee vehicle, Nigeria's InfraCredit model and a multi-country renewable-energy guarantee framework show four different ways public institutions can strengthen a transaction. StoneComms examines when guarantees create additional investment - and when they simply replace visible public borrowing with less visible contingent risk.\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines?utm_source=linkedin&utm_medium=organic_social&utm_campaign=credit-enhancement-african-infrastructure-investable-project-pipelines&utm_content=2026-10-30-personal-roundup\n\nThe full papers are freely available. If your organisation needs research on a specific African infrastructure, energy or investment question, I would welcome a conversation.\n\n#AfricanInfrastructure #DevelopmentFinance",
+  "text": "Something has been nagging at me this week: it’s much easier to buy an asset than to buy the service you hoped it would provide.\n\nMy research team at StoneComms has been looking at four rather different corners of African infrastructure, and the same practical question keeps popping up. Who makes the thing work, and who pays when it doesn’t?\n\nTake water. Kenya’s regulator says 48% of water supplied by regulated utilities was non-revenue water in 2024/25. That isn’t all leakage: faulty meters and billing matter too. But it’s a reminder that another treatment plant won’t fix a network that can’t account for what it already produces. Reducing those losses could help pay for repairs and get more reliable water to homes.\nhttps://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability\n\nThen there’s battery storage. We hear a lot about megawatts and containers. The team’s question is what service a battery actually provides: power at the right time, in the right place, under an agreement the utility can honour. Get that wrong and an expensive battery may do little for people facing outages.\nhttps://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power\n\nThe same thought carries over to electric buses. Cape Town has ordered 38 battery-electric buses for MyCiTi. But passengers don’t buy a bus; they need to get to work. That depends on charging, maintenance, routes and payments working together—and somebody being accountable when they don’t.\nhttps://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service\n\nThere’s also a less visible version of this question in finance. Public credit guarantees can make infrastructure investable. But my team asks whether they bring in genuinely additional money, and who bears the loss when a project fails. A guarantee that looks clever in a press release may be an expensive promise for taxpayers.\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines\n\nI find the connection rather striking. Investment matters, of course. But a working service is the point, and it matters who gets it.\n\nComing up, we’ll be sharing existing research on solar irrigation—where cheaper pumping can put pressure on scarce water—and practical AI adoption, where buying the right tool may be harder than buying the latest one.\n\nI thought you might enjoy these. The papers are free, and you can follow my team here:\nhttps://www.linkedin.com/company/stonecomms/\n\nIf you’re working on something similar, or have a difficult African infrastructure or investment question, do get in touch. I always enjoy hearing what people are working on.\n\n#AfricanInfrastructure #DevelopmentFinance #EnergyTransition #PublicServices",
   "publicationEvidence": [
     {
+      "title": "Credit Enhancement for African Infrastructure",
       "articleUrl": "https://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines",
       "postId": "6ada76221ef43d2639863d45",
-      "sentAt": "2026-10-23T06:54:44.109Z",
-      "externalLink": "https://www.linkedin.com/feed/update/urn:li:share:7519290192407666688"
+      "status": "sent",
+      "sentAt": "2026-10-23T06:54:44.109Z"
+    },
+    {
+      "title": "Urban Water Utilities in Africa",
+      "articleUrl": "https://stonecomms.com/research/urban-water-utilities-africa-non-revenue-water-financial-sustainability",
+      "postId": "6ada76230cf9e349484a19e0",
+      "status": "sent",
+      "sentAt": "2026-10-25T11:01:39.886Z"
+    },
+    {
+      "title": "Battery Energy Storage in Africa",
+      "articleUrl": "https://stonecomms.com/research/battery-energy-storage-africa-procuring-flexibility-reliable-power",
+      "postId": "6ada76230cf9e349484a1a54",
+      "status": "sent",
+      "sentAt": "2026-10-27T11:02:26.605Z"
+    },
+    {
+      "title": "Electric Buses in Africa",
+      "articleUrl": "https://stonecomms.com/research/electric-buses-africa-financing-reliable-urban-passenger-service",
+      "postId": "6ada762371bf6df473a9154f",
+      "status": "sent",
+      "sentAt": "2026-10-29T11:02:55.091Z"
     }
   ],
-  "scopeNote": "Only company research with verified sent timestamps and LinkedIn URLs; unrounded backlog carried forward; excludes prior roundup URLs and reconciled manual personal coverage.",
+  "scopeNote": "Revise the existing Friday scheduled Buffer post in place; four business LinkedIn promotions verified sent, no second post. Original automatically generated text lacked three qualifying articles and approved letters-home voice.",
   "processedAt": "2026-10-23T13:45:19.955Z",
   "duplicate": false,
   "result": {
@@ -25,5 +50,29 @@
     "dueAt": "2026-10-30T11:00:00.000Z",
     "sentAt": null,
     "externalLink": null
-  }
+  },
+  "reportingPeriod": {
+    "start": "2026-10-22T17:04:41+01:00",
+    "end": "2026-10-29T17:04:41+00:00",
+    "timezone": "Europe/London"
+  },
+  "revision": {
+    "targetPostId": "6adb64ef6bf37011a3795159",
+    "expectedPreviousText": "A research catch-up from my team at StoneComms.\n\nCredit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines\nAfrica does not lack announcements about private capital. It lacks enough projects whose risks are allocated, priced, monitored and disclosed well enough for private capital to stay. A new €500 million financing for Benin, South Africa's planned infrastructure credit-guarantee vehicle, Nigeria's InfraCredit model and a multi-country renewable-energy guarantee framework show four different ways public institutions can strengthen a transaction. StoneComms examines when guarantees create additional investment - and when they simply replace visible public borrowing with less visible contingent risk.\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines?utm_source=linkedin&utm_medium=organic_social&utm_campaign=credit-enhancement-african-infrastructure-investable-project-pipelines&utm_content=2026-10-30-personal-roundup\n\nThe full papers are freely available. If your organisation needs research on a specific African infrastructure, energy or investment question, I would welcome a conversation.\n\n#AfricanInfrastructure #DevelopmentFinance",
+    "reason": "Complete four-article letters-home roundup after 29 October publication verification; retain the exact original Friday 11:00 GMT schedule."
+  },
+  "upcomingPreviews": [
+    {
+      "title": "Solar Irrigation in Africa",
+      "articleUrl": "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+      "scheduledPromotion": "2026-10-31T11:00:00+00:00"
+    },
+    {
+      "title": "Practical AI Adoption in Sub-Saharan Africa",
+      "articleUrl": "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+      "scheduledPromotion": "2026-11-02T11:00:00+00:00"
+    }
+  ],
+  "peopleReferenced": [],
+  "linkedinMentions": []
 }
