@@ -38,8 +38,8 @@ jobs:
       - name: Verify social safety checks
         run: node --test tests/*.test.mjs
 
-      - name: Prepare weekly roundup from verified company publications
-        run: node scripts/prepare-social-handoff.mjs personal
+      # Weekly personal copy is authored by the editorial automation and placed in
+      # personal-social-outbox; this job delivers it without generating boilerplate.
 
       - name: Publish Lee personal LinkedIn requests
         run: node scripts/publish-buffer-personal-outbox.mjs
