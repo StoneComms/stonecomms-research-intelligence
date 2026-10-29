@@ -186,7 +186,7 @@ for (const file of files) {
         status: 'updated', postId, dueAt: confirmed.dueAt,
         bufferStatus: confirmed.status, textVerified: true, duplicateCreated: false
       }
-    }, null, 2) + '\\n')
+    }, null, 2) + '\n')
     console.log(`Revised existing Lee Buffer post for ${file}; schedule preserved: ${confirmed.dueAt}`)
     continue
   }
