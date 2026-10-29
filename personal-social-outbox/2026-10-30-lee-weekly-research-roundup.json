@@ -1,5 +1,5 @@
 {
-  "status": "revise-scheduled",
+  "status": "processed",
   "scheduledFor": "2026-10-30T11:00:00.000Z",
   "timezone": "Europe/London",
   "dedupeUrls": [
@@ -59,7 +59,8 @@
   "revision": {
     "targetPostId": "6adb64ef6bf37011a3795159",
     "expectedPreviousText": "A research catch-up from my team at StoneComms.\n\nCredit Enhancement for African Infrastructure: Converting Guarantees into Investable Project Pipelines\nAfrica does not lack announcements about private capital. It lacks enough projects whose risks are allocated, priced, monitored and disclosed well enough for private capital to stay. A new €500 million financing for Benin, South Africa's planned infrastructure credit-guarantee vehicle, Nigeria's InfraCredit model and a multi-country renewable-energy guarantee framework show four different ways public institutions can strengthen a transaction. StoneComms examines when guarantees create additional investment - and when they simply replace visible public borrowing with less visible contingent risk.\nhttps://stonecomms.com/research/credit-enhancement-african-infrastructure-investable-project-pipelines?utm_source=linkedin&utm_medium=organic_social&utm_campaign=credit-enhancement-african-infrastructure-investable-project-pipelines&utm_content=2026-10-30-personal-roundup\n\nThe full papers are freely available. If your organisation needs research on a specific African infrastructure, energy or investment question, I would welcome a conversation.\n\n#AfricanInfrastructure #DevelopmentFinance",
-    "reason": "Complete four-article letters-home roundup after 29 October publication verification; retain the exact original Friday 11:00 GMT schedule."
+    "reason": "Complete four-article letters-home roundup after 29 October publication verification; retain the exact original Friday 11:00 GMT schedule.",
+    "status": "verified"
   },
   "upcomingPreviews": [
     {
@@ -74,5 +75,14 @@
     }
   ],
   "peopleReferenced": [],
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "editedAt": "2026-10-29T17:11:29.316Z",
+  "editResult": {
+    "status": "updated",
+    "postId": "6adb64ef6bf37011a3795159",
+    "dueAt": "2026-10-30T11:00:00.000Z",
+    "bufferStatus": "scheduled",
+    "textVerified": true,
+    "duplicateCreated": false
+  }
 }
