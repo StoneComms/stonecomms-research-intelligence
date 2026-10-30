@@ -1,0 +1,42 @@
+{
+  "status": "processed",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery",
+  "scheduledFor": "2026-11-04T11:00:00.000Z",
+  "text": "Digital Public Infrastructure in Africa: Procurement, Interoperability and Accountable Service Delivery\n\nDigital public infrastructure can shorten the distance between a person and a public service. It can also concentrate failure, exclusion and supplier dependence inside systems that become difficult to replace. As African governments move from pilots to national and cross-border platforms, the central question is no longer whether to digitise. It is how to procure a modular, governed service that people can use, challenge and trust.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery?utm_source=linkedin&utm_medium=organic_social&utm_campaign=digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery&utm_content=2026-11-04-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ae3c4e0e6fd998436463efe_ChatGPT%20Image%20Oct%2029%2C%202026%2C%2010_11_47%20PM.png",
+      "alt": "A civil-registration officer helps an African market trader and community health worker review paper records, a laptop and a phone at a connected public-service centre."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ae3c4e0e6fd998436463efe_ChatGPT%20Image%20Oct%2029%2C%202026%2C%2010_11_47%20PM.png",
+    "alt": "A civil-registration officer helps an African market trader and community health worker review paper records, a laptop and a phone at a connected public-service centre.",
+    "sha256": "76ea7d8778bd8d2fa63989713bd0d12ae18e23f7a3139a4f44a6324959ec8c77",
+    "contentType": "image/png",
+    "bytes": 2859445,
+    "checkedAt": "2026-10-30T15:00:35.881Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-10-30T15:00:37.582Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6ae4b1159394ea34c11dead8",
+      "dueAt": "2026-11-04T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
+}
