@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "scheduledFor": "2026-11-06T11:00:00.000Z",
   "timezone": "Europe/London",
   "publishNow": false,
@@ -16,5 +16,16 @@
     "basis": "Lee approved the complete draft in this conversation."
   },
   "scopeNote": "Approved letters-home editorial for 6 November. Company promotions were scheduled, not confirmed published. Empty dedupeUrls intentionally uses exact-text deduplication: the 30 October edition previewed two of these research URLs, and shared URLs must not suppress this distinct approved edition.",
-  "factCheckedAsOf": "2026-10-31"
+  "factCheckedAsOf": "2026-10-31",
+  "processedAt": "2026-10-31T10:01:08.316Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "scheduled",
+    "shareMode": "customScheduled",
+    "postId": "6ae5bc64eaa24d6f9a6975eb",
+    "dueAt": "2026-11-06T11:00:00.000Z",
+    "sentAt": null,
+    "externalLink": null
+  }
 }
