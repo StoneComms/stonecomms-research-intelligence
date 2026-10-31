@@ -1,0 +1,20 @@
+{
+  "status": "ready",
+  "scheduledFor": "2026-11-06T11:00:00.000Z",
+  "timezone": "Europe/London",
+  "publishNow": false,
+  "text": "I’ve found myself thinking about a useful question to ask when somebody shows you a promising new technology: who gets to say, “Hang on, that isn’t right”?\n\nThree papers from my team at StoneComms brought it to mind. They cover solar irrigation, practical AI adoption and digital public infrastructure. An unlikely combination, perhaps, until you start thinking about what happens when one person’s decision affects somebody else.\n\nWith solar irrigation, a farmer can have a working pump, a profitable crop and an affordable loan, while drawing from groundwater that neighbours also depend on. Checking the borrower’s repayments won’t tell you whether the shared water supply is being managed properly. Somebody needs the information—and the authority—to change course.\n\nThe AI paper raises a similar question about information. A tool drawing on government documents needs those documents kept current, conflicts resolved and mistakes recorded. Otherwise, making answers quicker can also make outdated information travel further. I’m interested in who can challenge the answer, and whether that challenge improves the next one.\n\nThat becomes especially consequential when public systems connect identity, payments and other services. Imagine an incorrect record being reused across several agencies. The connections intended to save you repeating your details could also save the system repeating its checks. How do you correct the original mistake, get the correction recognised elsewhere, and access the service meanwhile?\n\nThe connection, for me, is that the ability to correct a system deserves as much attention as the ability to expand it.\n\nI’d like to hear more project pitches that explain what happens when someone objects, a record is wrong or conditions change. Those answers would tell me quite a lot about whether the promised benefits will last.\n\nI thought you might enjoy the papers:\n\nSolar Irrigation in Africa\nhttps://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits\n\nPractical AI Adoption in Sub-Saharan Africa\nhttps://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity\n\nDigital Public Infrastructure in Africa\nhttps://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery\n\nThey’re freely available. If these questions crop up in your work, I’d enjoy comparing notes.\n\n#AfricanInfrastructure #PublicServices #ResponsibleAI",
+  "dedupeUrls": [],
+  "researchUrls": [
+    "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+    "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+    "https://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery"
+  ],
+  "editorialApproval": {
+    "status": "approved",
+    "date": "2026-10-31",
+    "basis": "Lee approved the complete draft in this conversation."
+  },
+  "scopeNote": "Approved letters-home editorial for 6 November. Company promotions were scheduled, not confirmed published. Empty dedupeUrls intentionally uses exact-text deduplication: the 30 October edition previewed two of these research URLs, and shared URLs must not suppress this distinct approved edition.",
+  "factCheckedAsOf": "2026-10-31"
+}
