@@ -1,0 +1,42 @@
+{
+  "status": "processed",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
+  "scheduledFor": "2026-11-06T11:00:00.000Z",
+  "text": "Ethiopia's Renewable Power System: Converting Generation Capacity into Reliable Industrial Growth and Regional Trade\n\nEthiopia has created one of Africa's largest predominantly renewable power systems. Its next development test is operational: turning generation capacity into dependable electricity for households and industry while expanding regional trade without allowing exports, new plants or headline megawatts to outrun the networks and institutions that make power economically useful.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade?utm_source=linkedin&utm_medium=organic_social&utm_campaign=ethiopia-renewable-power-reliable-industrial-growth-regional-trade&utm_content=2026-11-06-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ae8d4387bd9b73eca684f36_ChatGPT%20Image%20Nov%202%2C%202026%2C%2006_19_30%20PM.png",
+      "alt": "An Ethiopian factory manager and grid engineer review an operating plan beside a textile line, substation, wind turbines and a highland dam."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6ae8d4387bd9b73eca684f36_ChatGPT%20Image%20Nov%202%2C%202026%2C%2006_19_30%20PM.png",
+    "alt": "An Ethiopian factory manager and grid engineer review an operating plan beside a textile line, substation, wind turbines and a highland dam.",
+    "sha256": "62160e1b7f51af07124feb66ae15247c25b387b8cb537b4a181f7d9a4416a08f",
+    "contentType": "image/png",
+    "bytes": 3060613,
+    "checkedAt": "2026-11-03T16:11:04.362Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/ethiopia-renewable-power-reliable-industrial-growth-regional-trade.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-11-03T16:11:05.730Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6aea0799985f73e58258d407",
+      "dueAt": "2026-11-06T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
+}
