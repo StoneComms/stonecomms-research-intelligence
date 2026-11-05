@@ -1,10 +1,14 @@
 {
-  "status": "processed",
+  "status": "revise-scheduled",
   "scheduledFor": "2026-11-06T11:00:00.000Z",
   "timezone": "Europe/London",
   "publishNow": false,
-  "text": "I’ve found myself thinking about a useful question to ask when somebody shows you a promising new technology: who gets to say, “Hang on, that isn’t right”?\n\nThree papers from my team at StoneComms brought it to mind. They cover solar irrigation, practical AI adoption and digital public infrastructure. An unlikely combination, perhaps, until you start thinking about what happens when one person’s decision affects somebody else.\n\nWith solar irrigation, a farmer can have a working pump, a profitable crop and an affordable loan, while drawing from groundwater that neighbours also depend on. Checking the borrower’s repayments won’t tell you whether the shared water supply is being managed properly. Somebody needs the information—and the authority—to change course.\n\nThe AI paper raises a similar question about information. A tool drawing on government documents needs those documents kept current, conflicts resolved and mistakes recorded. Otherwise, making answers quicker can also make outdated information travel further. I’m interested in who can challenge the answer, and whether that challenge improves the next one.\n\nThat becomes especially consequential when public systems connect identity, payments and other services. Imagine an incorrect record being reused across several agencies. The connections intended to save you repeating your details could also save the system repeating its checks. How do you correct the original mistake, get the correction recognised elsewhere, and access the service meanwhile?\n\nThe connection, for me, is that the ability to correct a system deserves as much attention as the ability to expand it.\n\nI’d like to hear more project pitches that explain what happens when someone objects, a record is wrong or conditions change. Those answers would tell me quite a lot about whether the promised benefits will last.\n\nI thought you might enjoy the papers:\n\nSolar Irrigation in Africa\nhttps://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits\n\nPractical AI Adoption in Sub-Saharan Africa\nhttps://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity\n\nDigital Public Infrastructure in Africa\nhttps://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery\n\nThey’re freely available. If these questions crop up in your work, I’d enjoy comparing notes.\n\n#AfricanInfrastructure #PublicServices #ResponsibleAI",
-  "dedupeUrls": [],
+  "text": "I’ve found myself thinking about a useful question to ask when somebody shows you a promising new technology: who gets to say, “Hang on, that isn’t right”?\n\nMy research team at StoneComms has been looking at solar irrigation, practical AI adoption and digital public infrastructure. An unlikely combination, perhaps, until you think about what happens when one person's decision affects somebody else.\n\nTake solar irrigation. A farmer can have a working pump, a profitable crop and an affordable loan, while drawing from groundwater that neighbours also depend on. Checking the borrower's repayments won't tell you whether the shared water supply is being managed properly. Somebody needs the information — and the authority — to change course.\n\nhttps://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits\n\nThe AI paper raises a similar question about information. A tool drawing on government documents needs those documents kept current, conflicts resolved and mistakes recorded. Otherwise, making answers quicker can make outdated information travel further. Paying for a fast answer isn't much of a saving if someone then has to undo a bad decision. Who can challenge the answer, and does that challenge improve the next one?\n\nhttps://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity\n\nThat becomes especially consequential when public systems connect identity, payments and other services. Imagine an incorrect record being reused across several agencies. The connections intended to save you repeating your details could also save the system repeating its checks. The promise is faster, less costly public service. But how do you get a mistake corrected everywhere — and access the service while you're waiting?\n\nhttps://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery\n\nWhat interests me is that the ability to correct a system deserves as much attention as the ability to expand it. I'd like to hear more project pitches that explain what happens when someone objects, a record is wrong or conditions change.\n\nComing up, the team is sharing existing research on another deceptively simple question: how can Ethiopia turn renewable generating capacity into dependable power for factories and households? We're also looking at the work needed to turn national climate plans into infrastructure projects that can actually be financed and held accountable.\n\nI thought you might enjoy these papers. As always, they're free to read, and you can follow my team here:\nhttps://www.linkedin.com/company/stonecomms/\n\nIf you're working through a similar question about African infrastructure, investment or public services, do get in touch. I always enjoy hearing what people are working on.\n\n#AfricanInfrastructure #DigitalPublicInfrastructure #ResponsibleAI #ClimateInvestment",
+  "dedupeUrls": [
+    "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+    "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+    "https://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery"
+  ],
   "researchUrls": [
     "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
     "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
@@ -27,5 +31,56 @@
     "dueAt": "2026-11-06T11:00:00.000Z",
     "sentAt": null,
     "externalLink": null
-  }
+  },
+  "reportingPeriod": {
+    "start": "2026-10-29T17:02:03+00:00",
+    "end": "2026-11-05T17:02:03+00:00",
+    "timezone": "Europe/London"
+  },
+  "revision": {
+    "targetPostId": "6ae5bc64eaa24d6f9a6975eb",
+    "expectedPreviousText": "I’ve found myself thinking about a useful question to ask when somebody shows you a promising new technology: who gets to say, “Hang on, that isn’t right”?\n\nThree papers from my team at StoneComms brought it to mind. They cover solar irrigation, practical AI adoption and digital public infrastructure. An unlikely combination, perhaps, until you start thinking about what happens when one person’s decision affects somebody else.\n\nWith solar irrigation, a farmer can have a working pump, a profitable crop and an affordable loan, while drawing from groundwater that neighbours also depend on. Checking the borrower’s repayments won’t tell you whether the shared water supply is being managed properly. Somebody needs the information—and the authority—to change course.\n\nThe AI paper raises a similar question about information. A tool drawing on government documents needs those documents kept current, conflicts resolved and mistakes recorded. Otherwise, making answers quicker can also make outdated information travel further. I’m interested in who can challenge the answer, and whether that challenge improves the next one.\n\nThat becomes especially consequential when public systems connect identity, payments and other services. Imagine an incorrect record being reused across several agencies. The connections intended to save you repeating your details could also save the system repeating its checks. How do you correct the original mistake, get the correction recognised elsewhere, and access the service meanwhile?\n\nThe connection, for me, is that the ability to correct a system deserves as much attention as the ability to expand it.\n\nI’d like to hear more project pitches that explain what happens when someone objects, a record is wrong or conditions change. Those answers would tell me quite a lot about whether the promised benefits will last.\n\nI thought you might enjoy the papers:\n\nSolar Irrigation in Africa\nhttps://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits\n\nPractical AI Adoption in Sub-Saharan Africa\nhttps://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity\n\nDigital Public Infrastructure in Africa\nhttps://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery\n\nThey’re freely available. If these questions crop up in your work, I’d enjoy comparing notes.\n\n#AfricanInfrastructure #PublicServices #ResponsibleAI",
+    "reason": "Verify and complete the existing 6 November personal roundup without creating a second post; add canonical dedupe URLs, company follow link, confirmed upcoming previews, and financial context."
+  },
+  "publicationEvidence": {
+    "checkedAt": "2026-11-05T17:04:25Z",
+    "sourceRun": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/42070950683",
+    "qualifyingResearch": [
+      {
+        "title": "Solar Irrigation in Africa",
+        "url": "https://stonecomms.com/research/solar-irrigation-africa-financing-farm-returns-water-limits",
+        "postId": "6ada7624793513d242f301c4",
+        "status": "sent",
+        "sentAt": "2026-10-31T11:02:25.386Z"
+      },
+      {
+        "title": "Practical AI Adoption in Sub-Saharan Africa",
+        "url": "https://stonecomms.com/research/practical-ai-adoption-sub-saharan-africa-procurement-local-adaptation-productivity",
+        "postId": "6ada76240cf9e349484a1b99",
+        "status": "sent",
+        "sentAt": "2026-11-02T11:02:57.870Z"
+      },
+      {
+        "title": "Digital Public Infrastructure in Africa",
+        "url": "https://stonecomms.com/research/digital-public-infrastructure-africa-procurement-interoperability-accountable-service-delivery",
+        "postId": "6ae4b1159394ea34c11dead8",
+        "status": "sent",
+        "sentAt": "2026-11-04T11:03:10.754Z"
+      }
+    ]
+  },
+  "upcomingPreviews": [
+    {
+      "title": "Ethiopia's Renewable Power System",
+      "status": "scheduled",
+      "scheduledFor": "2026-11-06T11:00:00.000Z"
+    },
+    {
+      "title": "Sovereign Climate Finance in Africa",
+      "status": "scheduled",
+      "scheduledFor": "2026-11-08T11:00:00.000Z"
+    }
+  ],
+  "peopleReferenced": [],
+  "linkedinMentions": []
 }
