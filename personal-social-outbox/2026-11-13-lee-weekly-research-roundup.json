@@ -1,0 +1,51 @@
+{
+  "status": "ready",
+  "scheduledFor": "2026-11-13T11:00:00+00:00",
+  "dedupeUrls": [
+    "https://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
+    "https://stonecomms.com/research/sovereign-climate-finance-africa-investable-accountable-infrastructure-pipelines"
+  ],
+  "text": "Two figures from Ethiopia caught my attention this week.\n\nThe country reports nearly 9,800 megawatts of installed electricity capacity, almost all of it renewable. Yet its national energy plan estimates that only 44% of people have electricity at even a basic service level.\n\nThere's no contradiction there. One figure tells you about the power a country can generate. The other tells you something about whether it reaches people.\n\nMy research team at StoneComms has been looking at what sits between the two. A factory can't run on a national capacity figure. It needs a dependable supply, a functioning local network and power it can afford. Families need reliable electricity too, not simply a connection on a map. And exporting electricity to neighbours only works well when the trading and payment arrangements hold up.\n\nThe paper asks how Ethiopia can turn its remarkable renewable resources into something more people and businesses can actually use.\n\nhttps://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade\n\nSomething similar came up in another piece the team has been working through. A new African sovereign climate-finance facility has been approved for Angola, Benin, Côte d'Ivoire and Nigeria. It could help turn national climate plans into investment in energy, water and other infrastructure.\n\nBut here's the catch: agreeing to provide finance and delivering a useful project are quite different achievements. Someone has to decide which projects are worth doing, work out the costs, prepare them properly and make sure public borrowing is manageable. Otherwise a very promising announcement can leave taxpayers with the bill and communities still waiting for the service.\n\nhttps://stonecomms.com/research/sovereign-climate-finance-africa-investable-accountable-infrastructure-pipelines\n\nI rather like the connection between these papers. Both start with something impressive on paper, then ask what it takes to make that promise useful in everyday life.\n\nComing up, we're sharing existing research on geothermal heat for East African industry — where the customer matters as much as the hot rock — and on reusing treated water in African cities without overlooking households' needs.\n\nI thought you might find these interesting. As always, the papers are free to read, and you can follow my team here:\nhttps://www.linkedin.com/company/stonecomms/\n\nIf you're working on an African infrastructure or investment question of your own, do get in touch. I always enjoy hearing what people are trying to solve.\n\n#AfricanInfrastructure #EnergyAccess #ClimateFinance #DevelopmentFinance",
+  "reportingPeriod": {
+    "start": "2026-11-05T17:02:13+00:00",
+    "end": "2026-11-12T17:02:13+00:00"
+  },
+  "publicationEvidence": {
+    "verifiedAt": "2026-11-12T17:04:19+00:00",
+    "readOnlyAuditRun": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/43265477019",
+    "companyPage": {
+      "identity": "StoneComms Research and Intelligence",
+      "verified": true
+    },
+    "published": [
+      {
+        "articleUrl": "https://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
+        "postId": "6aea0799985f73e58258d407",
+        "sentAt": "2026-11-06T11:02:42.634Z",
+        "bufferStatus": "sent"
+      },
+      {
+        "articleUrl": "https://stonecomms.com/research/sovereign-climate-finance-africa-investable-accountable-infrastructure-pipelines",
+        "postId": "6aecae1af28015a0fe5967ad",
+        "sentAt": "2026-11-08T11:01:36.204Z",
+        "bufferStatus": "sent"
+      }
+    ]
+  },
+  "upcoming": [
+    {
+      "articleUrl": "https://stonecomms.com/research/geothermal-heat-east-africa-industrial-demand-resource-risk",
+      "businessPostDueAt": "2026-11-13T11:00:00Z",
+      "status": "scheduled",
+      "type": "existing research"
+    },
+    {
+      "articleUrl": "https://stonecomms.com/research/urban-water-reuse-africa-industrial-offtake-public-priorities-investment",
+      "businessPostDueAt": "2026-11-15T11:00:00Z",
+      "status": "scheduled",
+      "type": "existing research"
+    }
+  ],
+  "peopleReferenced": [],
+  "linkedinMentions": []
+}
