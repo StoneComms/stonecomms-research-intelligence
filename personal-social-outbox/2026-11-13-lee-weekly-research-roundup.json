@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "scheduledFor": "2026-11-13T11:00:00+00:00",
   "dedupeUrls": [
     "https://stonecomms.com/research/ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
@@ -47,5 +47,16 @@
     }
   ],
   "peopleReferenced": [],
-  "linkedinMentions": []
+  "linkedinMentions": [],
+  "processedAt": "2026-11-12T17:06:11.293Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "scheduled",
+    "shareMode": "customScheduled",
+    "postId": "6af5f203865d1bfd30052aef",
+    "dueAt": "2026-11-13T11:00:00.000Z",
+    "sentAt": null,
+    "externalLink": null
+  }
 }
