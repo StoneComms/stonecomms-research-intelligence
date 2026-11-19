@@ -1,0 +1,58 @@
+{
+  "status": "ready",
+  "scheduledFor": "2026-11-20T11:00:00+00:00",
+  "timezone": "Europe/London",
+  "reportingPeriod": {
+    "start": "2026-11-12T17:00:00+00:00",
+    "end": "2026-11-19T17:00:00+00:00"
+  },
+  "dedupeUrls": [
+    "https://stonecomms.com/research/geothermal-heat-east-africa-industrial-demand-resource-risk",
+    "https://stonecomms.com/research/urban-water-reuse-africa-industrial-offtake-public-priorities-investment"
+  ],
+  "text": "It’s funny how something can be valuable in theory and still be rather difficult to sell.\n\nMy research team at StoneComms has been looking into two examples this week: geothermal heat in East Africa, and reusing treated wastewater in African cities.\n\nTake geothermal heat. We know it can be used for things like food drying and greenhouse production. But here’s the complication. A factory doesn’t buy “geothermal potential”. It needs heat at the right temperature, at the right time, and at a price it can afford. And unlike electricity, heat generally needs a customer reasonably close by.\n\nSo before anyone builds an industrial park around a promising resource, they need to understand the factories, the pipes and the geology together. Otherwise you risk spending a great deal on something nobody can use reliably. Get the match right, though, and local businesses could have a useful, dependable energy service.\n\nhttps://stonecomms.com/research/geothermal-heat-east-africa-industrial-demand-resource-risk\n\nThe water paper poses a surprisingly similar question.\n\nIt looks at industrial water reuse in Durban, the very different safeguards around drinking-water reclamation in Windhoek, and wider water planning in Morocco. A treatment plant can produce water, but somebody still needs to buy it, trust its quality and keep the service financially viable.\n\nAnd there’s an important public question too. If an industrial customer switches to reclaimed water, does that really leave more freshwater available for households and other users? You’d hope so, but it needs to be demonstrated, not assumed.\n\nhttps://stonecomms.com/research/urban-water-reuse-africa-industrial-offtake-public-priorities-investment\n\nWhat interested me is how both papers begin with a promising resource and end up asking quite ordinary questions. Who needs it? Who pays? Who makes sure it works? And who else benefits?\n\nThere’s another question the team has been examining that I hope to return to: African cities can recover valuable materials from rubbish, but can recycling revenues really pay for the everyday business of collecting it all?\n\nI thought you might enjoy these two papers. They’re free to read, as always, and you can follow my team here:\nhttps://www.linkedin.com/company/stonecomms/\n\nIf you’re working through an African infrastructure or investment question of your own, do get in touch. I always enjoy hearing what people are working on.\n\n#AfricanInfrastructure #GeothermalEnergy #WaterSecurity #DevelopmentFinance",
+  "publicationEvidence": {
+    "method": "Read-only Buffer audit of the verified StoneComms Research and Intelligence LinkedIn business account, matched against social-outbox processed receipts",
+    "auditRunUrl": "https://github.com/StoneComms/stonecomms-research-intelligence/actions/runs/44571977636",
+    "checkedAt": "2026-11-19T16:58:11.675Z",
+    "published": [
+      {
+        "title": "Geothermal Heat in East Africa: Matching Industrial Demand, Resource Risk and Investment",
+        "articleUrl": "https://stonecomms.com/research/geothermal-heat-east-africa-industrial-demand-resource-risk",
+        "businessPostId": "6af5ed56cae14c0f3f631de1",
+        "sentAt": "2026-11-13T11:01:53.208Z",
+        "status": "sent"
+      },
+      {
+        "title": "Urban Water Reuse in Africa: Industrial Offtake, Public Water Priorities and Investment",
+        "articleUrl": "https://stonecomms.com/research/urban-water-reuse-africa-industrial-offtake-public-priorities-investment",
+        "businessPostId": "6af5ed571486327d29ac5687",
+        "sentAt": "2026-11-15T11:01:42.367Z",
+        "status": "sent"
+      }
+    ]
+  },
+  "duplicateCheck": {
+    "personalAccountIdentity": "Lee Breheny",
+    "checkedAt": "2026-11-19T16:58:12.055Z",
+    "latestPersonalPostId": "6af5f203865d1bfd30052aef",
+    "latestPersonalPostSentAt": "2026-11-13T11:01:31.320Z",
+    "noPersonalRoundupScheduledForThisWeek": true,
+    "existingNov13RoundupCovered": [
+      "ethiopia-renewable-power-reliable-industrial-growth-regional-trade",
+      "sovereign-climate-finance-africa-investable-accountable-infrastructure-pipelines"
+    ],
+    "note": "Publisher must independently re-check Buffer duplicates before creating a post."
+  },
+  "upcomingPreviews": [
+    {
+      "topic": "Municipal waste financing and recycling revenues",
+      "sourceManifest": "webflow-publications/municipal-waste-finance-africa-collection-recycling-public-service.json",
+      "status": "Developed research, no company-page promotion date verified",
+      "certainty": "No scheduled date claimed"
+    }
+  ],
+  "peopleReferenced": [],
+  "linkedinMentions": [],
+  "editorialNote": "Personal letters-home tone; no external factual claims beyond published reports; no additional people mentioned."
+}
