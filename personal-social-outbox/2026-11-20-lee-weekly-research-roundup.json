@@ -1,5 +1,5 @@
 {
-  "status": "ready",
+  "status": "processed",
   "scheduledFor": "2026-11-20T11:00:00+00:00",
   "timezone": "Europe/London",
   "reportingPeriod": {
@@ -54,5 +54,16 @@
   ],
   "peopleReferenced": [],
   "linkedinMentions": [],
-  "editorialNote": "Personal letters-home tone; no external factual claims beyond published reports; no additional people mentioned."
+  "editorialNote": "Personal letters-home tone; no external factual claims beyond published reports; no additional people mentioned.",
+  "processedAt": "2026-11-19T17:00:49.034Z",
+  "duplicate": false,
+  "result": {
+    "status": "created",
+    "bufferStatus": "scheduled",
+    "shareMode": "customScheduled",
+    "postId": "6aff2b40d32f1cc858d692e4",
+    "dueAt": "2026-11-20T11:00:00.000Z",
+    "sentAt": null,
+    "externalLink": null
+  }
 }
