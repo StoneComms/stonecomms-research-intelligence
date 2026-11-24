@@ -1,0 +1,42 @@
+{
+  "status": "processed",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/african-vaccine-manufacturing-procurement-regulatory-readiness-investment",
+  "scheduledFor": "2026-11-27T11:00:00.000Z",
+  "text": "African Vaccine Manufacturing: Procurement Commitments, Regulatory Readiness and Investment\n\nA vaccine factory needs more than a production line and a public-health rationale. It needs a product that can be supplied to its intended market, buyers able to place and fund orders, and the capability to deliver quality-assured doses repeatedly. Africa's emerging procurement arrangements make those requirements more visible, while exposing the distance between an invitation to compete and dependable manufacturing revenue.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/african-vaccine-manufacturing-procurement-regulatory-readiness-investment?utm_source=linkedin&utm_medium=organic_social&utm_campaign=african-vaccine-manufacturing-procurement-regulatory-readiness-investment&utm_content=2026-11-27-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6b054285df72c95bd069c143_stonecomms-african-vaccine-manufacturing-procurement-regulatory-readiness-investment-hero.png",
+      "alt": "African quality-assurance and logistics professionals inspect a sealed vial and insulated transport box beside a vaccine production and dispatch area."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/african-vaccine-manufacturing-procurement-regulatory-readiness-investment",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6b054285df72c95bd069c143_stonecomms-african-vaccine-manufacturing-procurement-regulatory-readiness-investment-hero.png",
+    "alt": "African quality-assurance and logistics professionals inspect a sealed vial and insulated transport box beside a vaccine production and dispatch area.",
+    "sha256": "08bf0570755ab576375a15fcd97f4bc8f07b2cbf1cd15755e0e17400ce61660d",
+    "contentType": "image/png",
+    "bytes": 4166047,
+    "checkedAt": "2026-11-24T19:28:50.554Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/african-vaccine-manufacturing-procurement-regulatory-readiness-investment.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-11-24T19:28:53.699Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6b05e575d8711eba6d9442f3",
+      "dueAt": "2026-11-27T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "status": "processed",
+  "channels": [
+    "linkedin"
+  ],
+  "articleUrl": "https://stonecomms.com/research/municipal-waste-finance-africa-collection-recycling-public-service",
+  "scheduledFor": "2026-11-25T11:00:00.000Z",
+  "text": "Municipal Waste Finance in Africa: Collection Contracts, Recycling Revenues and Public Service\n\nA city can contain valuable discarded materials and still lack the money to collect its rubbish. Africa's circular-economy opportunity depends on recognising that difference. Recent collection reforms in Kampala, project preparation in Senegal and South African packaging-finance arrangements show why reliable services need an explicit payer, an accountable operating chain and a fair settlement with the people already recovering materials.\n\nRead the full StoneComms research:\nhttps://stonecomms.com/research/municipal-waste-finance-africa-collection-recycling-public-service?utm_source=linkedin&utm_medium=organic_social&utm_campaign=municipal-waste-finance-africa-collection-recycling-public-service&utm_content=2026-11-25-main-post\n\n#AfricanInfrastructure #DevelopmentFinance #StoneComms",
+  "media": [
+    {
+      "type": "image",
+      "url": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6b054374392ce96050dbbf35_stonecomms-municipal-waste-finance-africa-collection-recycling-public-service-hero.png",
+      "alt": "African waste workers move a covered bin and check sorted cardboard beside a collection truck and neighbourhood recovery bay."
+    }
+  ],
+  "heroEvidence": {
+    "articleUrl": "https://stonecomms.com/research/municipal-waste-finance-africa-collection-recycling-public-service",
+    "imageUrl": "https://cdn.prod.website-files.com/6a92be796568d7e2b4121557/6b054374392ce96050dbbf35_stonecomms-municipal-waste-finance-africa-collection-recycling-public-service-hero.png",
+    "alt": "African waste workers move a covered bin and check sorted cardboard beside a collection truck and neighbourhood recovery bay.",
+    "sha256": "5438d6a5792191ea368d6ebf6257fc4c019727b018c7a16a0583e614060ff709",
+    "contentType": "image/png",
+    "bytes": 2344180,
+    "checkedAt": "2026-11-24T19:28:50.248Z",
+    "source": "Exact image and alt text on the live production research article"
+  },
+  "sourceManifest": "webflow-publications/municipal-waste-finance-africa-collection-recycling-public-service.json",
+  "handoff": "Automatically prepared from published report title, standfirst and exact live hero; authorized cadence restoration 22 October 2026",
+  "processedAt": "2026-11-24T19:28:52.687Z",
+  "duplicate": false,
+  "results": [
+    {
+      "channel": "linkedin",
+      "status": "created",
+      "postId": "6b05e574bc1fcb6588e51323",
+      "dueAt": "2026-11-25T11:00:00.000Z",
+      "sentAt": null,
+      "bufferStatus": "scheduled",
+      "externalLink": null,
+      "assetCount": 1
+    }
+  ]
+}
